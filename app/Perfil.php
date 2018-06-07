@@ -14,4 +14,9 @@ class Perfil extends Model
     	'nivel_acesso'
     	
     ];
+
+    public function funcionario()
+    {
+        return $this->hasMany('App\Funcionatio');
+    }
 }

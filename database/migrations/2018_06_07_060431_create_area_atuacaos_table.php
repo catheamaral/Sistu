@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProvidenciasTable extends Migration
+class CreateAreaAtuacaosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProvidenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('providencias', function (Blueprint $table) {
+        Schema::create('area_atuacao', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('descricao');
-            $table->boolean('status');
-            
         });
     }
 
@@ -29,6 +27,6 @@ class CreateProvidenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('providencias');
+        Schema::dropIfExists('area_atuacaos');
     }
 }

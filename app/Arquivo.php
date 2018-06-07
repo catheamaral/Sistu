@@ -12,7 +12,8 @@ class Arquivo extends Model
     	
     ];
 
-    public function andamento(){
-    	return $this->belongsToMany(Andamento::class);
+    public function andamento()
+    {
+        return $this->belongsTo('App\Andamento');
     }
 }

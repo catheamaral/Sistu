@@ -13,16 +13,30 @@ class Pessoa extends Model
 		'nome',
 		'data_nascimento',
 		'genitor'
-		'genitora',
-		'responsavel',
 		'contato_genitor',
+		'cpf_genitor',
+		'rg_genitor',
+		'genitora',
 		'contato_genitora',
+		'cpf_genitora',
+		'rg_genitora',
+		'responsavel',
 		'contato_responsavel',
+		'cpf_responsavel',
+		'rg_responsavel',
 		'endereco',
 		'complemento',
 		'estado',
-		'cidade'
-    	
+		'cidade',
+		'denunciante',
+    	'contato_denunciante',
+    	'cpf_denunciante',
+    	'rg_denunciante',
     ];
+
+    public function registroAtendimento()
+    {
+        return $this->hasMany('App\Registro_atendimento');
+    }
 
 }

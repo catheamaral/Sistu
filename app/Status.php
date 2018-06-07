@@ -11,4 +11,9 @@ class Status extends Model
 		'descricao'
     	
     ];
+
+    public function andamento()
+    {
+        return $this->hasMany('App\Andamento');
+    }
 }
