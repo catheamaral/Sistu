@@ -21,7 +21,7 @@ class CreateAgenteVioladorsTable extends Migration
             $table->boolean('pais');
             $table->boolean('responsavel');
             $table->boolean('propria_conduta');
-            $table->string('observacao')->nullable();
+            $table->text('observacao', 500)->nullable();
         });
     }
 

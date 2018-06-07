@@ -13,10 +13,19 @@ class CreateStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('descricao');
+            $table->enum('descricao',['Enviado para conselheiro',
+                                        'Aceito pelo conselheiro',
+                                        'Recusado pelo conselheiro',
+                                        'Enviado para o colegiado',
+                                        'Aceito pelo colegiado',
+                                        'Recusado pelo colegiado',
+                                        'Documento gerado',
+                                        'Documento anexado',
+                                        'Processo finalizado',
+                                        'Processo editado']);
         });
     }
 

@@ -17,7 +17,7 @@ class CreatePerfilTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('descricao');
-            $table->boolean('nivel_acesso');
+            
         });
     }
 

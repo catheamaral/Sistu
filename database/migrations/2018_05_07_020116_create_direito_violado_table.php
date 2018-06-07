@@ -28,7 +28,8 @@ class CreateDireitoVioladoTable extends Migration
             $table->boolean('esporte');
             $table->boolean('lazer');
             $table->boolean('profissional');
-            $table->string('observacao')->nullable();
+            $table->boolean('protecao_no_trabalho');
+            $table->text('observacao', 500)->nullable();
 
         });
     }

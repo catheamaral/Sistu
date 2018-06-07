@@ -10,8 +10,7 @@ class Perfil extends Model
 
     protected $fillable = [
 
-    	'descricao',
-    	'nivel_acesso'
+    	'descricao'
     	
     ];
 

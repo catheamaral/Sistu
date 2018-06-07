@@ -16,7 +16,7 @@ class CreateAreaAtuacaosTable extends Migration
         Schema::create('area_atuacao', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('descricao');
+            $table->enum('descricao',['1º Conselho','2º Conselho','3º Conselho']);
         });
     }
 

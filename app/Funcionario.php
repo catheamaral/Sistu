@@ -15,8 +15,8 @@ class Funcionario extends Model
     	'rg',
     	'data_nascimento',
     	'endereco',
-    	'complemento',
-    	'area_atuacao'
+    	'complemento'
+    	
     	
     ];
 

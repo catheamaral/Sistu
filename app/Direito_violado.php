@@ -21,6 +21,7 @@ class Direito_violado extends Model
     	'esporte',
     	'lazer',
     	'profissional',
+        'protecao_no_trabalho',
     	'observacao'
     ];
 
