@@ -15,7 +15,7 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            
             $table->enum('descricao',['Enviado para conselheiro',
                                         'Aceito pelo conselheiro',
                                         'Recusado pelo conselheiro',
