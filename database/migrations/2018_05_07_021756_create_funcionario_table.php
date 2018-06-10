@@ -19,10 +19,16 @@ class CreateFuncionarioTable extends Migration
             $table->string('nome');
             $table->string('cpf');
             $table->string('rg');
-            $table->string('data_nascmento');
+            $table->string('data_nascimento');
             $table->string('endereco');
-            $table->string('complemento');
-            $table->string('area_atuacao');
+            $table->string('complemento')->nullable();
+
+            $table->unsignedInteger('perfil_id');
+            $table->foreign('perfil_id')->references('id')->on('perfil');
+
+            $table->unsignedInteger('area_atuacao_id');
+            $table->foreign('area_atuacao_id')->references('id')->on('area_atuacao');
+            
         });
     }
 

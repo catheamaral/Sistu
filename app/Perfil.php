@@ -10,8 +10,12 @@ class Perfil extends Model
 
     protected $fillable = [
 
-    	'descricao',
-    	'nivel_acesso'
+    	'descricao'
     	
     ];
+
+    public function funcionario()
+    {
+        return $this->hasMany('App\Funcionatio');
+    }
 }

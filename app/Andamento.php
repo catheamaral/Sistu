@@ -13,7 +13,18 @@ class Andamento extends Model
     	
     ];
 
-    public function arquivo(){
-    	return $this->belongsToMany(arquivo::class);
+   	public function arquivo()
+    {
+        return $this->hasMany('App\Arquivo');
+    }
+
+    public function registroAtendimento()
+    {
+        return $this->belongsTo('App\Registro_atendimento');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Status');
     }
 }

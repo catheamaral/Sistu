@@ -16,8 +16,15 @@ class CreateAndamentosTable extends Migration
         Schema::create('andamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('descricao');
+            $table->text('descricao', 500);
             $table->timestamps('data_hora');
+
+            $table->unsignedInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('status');
+
+            $table->unsignedInteger('registro_atendimento_id');
+            $table->foreign('registro_atendimento_id')->references('id')->on('registro_atendimento');
+
         });
     }
 

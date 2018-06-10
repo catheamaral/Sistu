@@ -21,4 +21,19 @@ class Registro_atendimento extends Model
     public function direito_violado(){
     	return $this->belongsToMany(Direito_violado::class);
     }
+
+    public function criador()
+    {
+        return $this->belongsTo('App\Funcionario');
+    }
+
+    public function pessoa()
+    {
+        return $this->belongsTo('App\Pessoa');
+    }
+
+    public function andamento()
+    {
+        return $this->hasMany('App\Andamento');
+    }
 }

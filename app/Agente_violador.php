@@ -14,7 +14,8 @@ class Agente_violador extends Model
     	'sociedade',
     	'pais',
     	'responsavel',
-    	'propria_conduta'
+    	'propria_conduta',
+        'observacao'
     	
     ];
 
