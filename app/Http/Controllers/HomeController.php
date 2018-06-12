@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -22,7 +26,16 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   
+
+        $user = Auth::user()->perfil_id;
+        if ($user == 1) {
+            # code...
+            return view('estatistica');
+        }elseif($user == 2){
+            return view('estatistica_atendente');
+        }else{
+            #return view('');
+        }
     }
 }

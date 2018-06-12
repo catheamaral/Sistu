@@ -26,9 +26,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar w3-cell-middle">
-      <span>Bem Vindo, <strong><?php 
-      $name = Auth::user()->name;
-      echo $name;  ?></strong></span><br>
+      <span>Bem Vindo, <strong>Usuario</strong></span><br>
     </div>
   </div>
   <hr>
@@ -37,25 +35,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
 
-      <?php
-      $perfil_id = Auth::user()->perfil_id;
-      if($perfil_id == 1){  ?>
+    
+    
+      
+          
+        
       <a href="{{url('/estatistica')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home"></i>&nbsp; Página Inicial</a>
-      <a href="{{url('/input')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i>&nbsp; Cadastro</a>
+      <a href="input/=<?php echo $info->perfil_id ?>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i>&nbsp; Cadastro</a>
       <a href="{{url('/listagem')}}" class="w3-bar-item w3-button w3-padding" ><i class="fa fa-search fa-fw"></i>&nbsp; Busca</a>
       <a href="{{url('/conselheiro')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; Conselheiros</a>
       <a href="{{url('/novos')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bars fa-fw"></i>&nbsp; Novos Processos</a>
       <a href="{{url('/meusProcessos')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>&nbsp; Meus Processos</a>
       <a href="{{url('/gerarRelatorio')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-file fa-fw"></i>&nbsp; Relatório</a>
-      <?php } ?>
-
-      <?php
-      $perfil_id = Auth::user()->perfil_id;
-      if($perfil_id == 2){  ?>
-        <a href="{{url('/estatistica_atendente')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home"></i>&nbsp; Página Inicial</a>
-        <a href="{{url('/input_atendente')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i>&nbsp; Cadastro</a>
-        <a href="{{url('/listagem_atendente')}}" class="w3-bar-item w3-button w3-padding" ><i class="fa fa-search fa-fw"></i>&nbsp; Busca</a>
-      <?php } ?>
+    
       
   </div>
 </nav>

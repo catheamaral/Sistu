@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-use App\pessoa;
+use App\Pessoa;
 
 class pessoa_cont extends Controller
 {
@@ -19,9 +19,11 @@ class pessoa_cont extends Controller
     public function index()
     {
 
+        #$pessoa = DB::table('perfil')
 
-
+        
         return view("input");
+        
     }
 
     /**
@@ -42,9 +44,8 @@ class pessoa_cont extends Controller
      */
     public function store(Request $request)
     {
-        $pessoa = Pessoa::create($request->all());
 
-        #dd($pessoa);
+        $pessoa = Pessoa::create($request->all());        
 
         return view('processos', ['pessoa' => $pessoa, 'cadastrado' => $request['cadastrado']]);
     }
@@ -81,19 +82,36 @@ class pessoa_cont extends Controller
     public function update(Request $request, $id)
     {
 
-        #$user= Pessoa::findOrFail($id);
+        $pessoa = Pessoa::find($id);
+        $pessoa->nome = $request['nome'];
+        $pessoa->data_nascimento = $request['data_nascimento'];
 
-        
-        #$params = ($request->all());
-        
-        $pessoa = DB::table('pessoa')
-                ->where('id', $id)
-                ->update(['nome' => $request['nome'],
-                        'data_nascimento' => $request['data_nascimento']]);
-        
+        $pessoa->genitor = $request['genitor'];
+        $pessoa->contato_genitor = $request['contato_genitor'];
+        $pessoa->cpf_genitor = $request['cpf_genitor'];
+        $pessoa->rg_genitor= $request['rg_genitor'];
 
-        dd($pessoa['nome']);
-        #return view('processo_edit', ['pessoa' => $pessoa]);
+        $pessoa->genitora = $request['genitora'];
+        $pessoa->contato_genitora = $request['contato_genitora'];
+        $pessoa->cpf_genitora = $request['cpf_genitora'];
+        $pessoa->rg_genitora = $request['rg_genitora'];
+
+        $pessoa->denunciante = $request['denunciante'];
+        $pessoa->contato_denunciante = $request['contato_denunciante'];
+        $pessoa->cpf_denunciante = $request['cpf_denunciante'];
+        $pessoa->rg_denunciante= $request['rg_denunciatne'];
+
+        $pessoa->responsavel = $request['responsavel'];
+        $pessoa->contato_responsavel = $request['contato_responsavel'];
+        $pessoa->cpf_responsavel = $request['cpf_responsavel'];
+        $pessoa->rg_responsavel = $request['rg_responsavel'];
+
+        $pessoa->LocalOcorrencia = $request['LocalOcorrencia'];
+        $pessoa->endereco = $request['endereco'];
+        $pessoa->complemento = $request['complemento'];
+        $pessoa->save();
+
+        return view('processo_edit2', ['pessoa' => $pessoa]);
 
 
     }

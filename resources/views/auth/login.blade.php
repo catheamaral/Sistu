@@ -15,7 +15,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                         @csrf
 
                         <div class="w3-section">
-                            <label for="email"><b>{{ __('E-Mail Address') }}</b></label>                            
+                            <label for="email"><b>{{ __('E-Mail') }}</b></label>                            
                                 <input id="email" type="email" class="w3-input w3-border w3-margin-bottom" name="email" value="{{ old('email') }}" required autofocus>
 
                                     @if ($errors->has('email'))
@@ -24,7 +24,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                                         </span>
                                     @endif
 
-                            <label for="password"><b>{{ __('Password') }}</b></label>
+                            <label for="password"><b>{{ __('Senha') }}</b></label>
                                 <input id="password" type="password" class="w3-input w3-border" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -34,14 +34,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                                 @endif
 
                                 <button type="submit" class="w3-button w3-block w3-green w3-section w3-padding">
-                                    {{ __('Login') }}
+                                    {{ __('Entrar') }}
                                 </button>
                                 <label>
-                                    <input class="w3-check w3-margin-top" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                    <input class="w3-check w3-margin-top" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Me lembre') }}
                                 </label>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
                             </div>
                         </div>
                     </form>

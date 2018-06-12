@@ -47,18 +47,9 @@ function formatar(mascara, documento){
         <h2>Identificação</h2>
       </div>
 
-      <form class="w3-container w3-row-padding w3-white" id="form" action="edit/{id}" method="POST">
+      <form class="w3-container w3-row-padding w3-white" id="form" action="edit/{{$data->id}}" method="POST">
         @csrf
-        <p>
-			<div  class="w3-col s12">
-				<select class="w3-select" name="oriDenuncia">
-				<option value="" disabled> Origem da Denúncia</option>
-				  <option value="local"> Local</option>
-				  <option value="tel"> Telefone</option>
-				  <option value="mp"> Ministério Público </option>
-				  <option value="je"> Justiça Estadual</option>
-				</select></p></br>
-			</div>
+        
         <p>
           <div class="w3-col s8">
             <input class="w3-input" type="text" name="nome" id="nome" value="{{$data->nome}}"></p>

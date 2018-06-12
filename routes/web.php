@@ -22,10 +22,15 @@ Route::get('/conselheiro', function () {
 Route::get('/novos', function () {
     return view('novos');
 });
-
+###########################################33 HOME CONSELHEIRO
 Route::get('/estatistica', function () {
     return view('estatistica');
 });
+################################################################ HOME ATENDENTE
+Route::get('/estatistica_atendente', function () {
+    return view('estatistica_atendente');
+});
+#############################################################
 
 Route::get('/processo_deliberacao', function () {
     return view('precesso_deliberacao');
@@ -80,19 +85,32 @@ Route::get('np/okay/input_edit/{data}',  function ($data) {
 
 });
 
-################################################################3
+################################################################ INPUT CONSELHEIRO
+Route::get('input/', 'pessoa_cont@index' );
+################################################################ INPUT ATENDENTE
+Route::get('/input_atendente', function () {
+    return view('input_atendente');
+});
 
-
-Route::get('input', 'pessoa_cont@index' );
 //Route::get('listagem', 'listagem_cont@index' );
 Route::post('verify', 'pessoa_cont@store');
 
-
+Route::post('verify_atendente', 'pessoa_cont_atendente@store');
+##################################################################################################3############
+#ROTAS DE LISTAGEM
+################################################################################################################
 Route::get('listagem', function () {
 
     $info = DB::table('pessoa')->get();
 
     return view('listagem', ['info' => $info]);
+});
+
+Route::get('listagem_atendente', function () {
+
+    $info = DB::table('pessoa')->get();
+
+    return view('listagem_atendente', ['info' => $info]);
 });
 
 Route::get('meusProcessos', function () {
@@ -107,10 +125,10 @@ Route::get('meusProcessos', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 ##################################################################################
 
 Route::post('np/okay/input_edit/edit/{id}', 'pessoa_cont@update');
 
 ##################################################################################
-
