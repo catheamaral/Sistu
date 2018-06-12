@@ -16,7 +16,7 @@ class CreatePessoaTable extends Migration
         Schema::create('pessoa', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
+            /*
             $table->string('nome');
             $table->string('data_nascimento');
 
@@ -44,6 +44,7 @@ class CreatePessoaTable extends Migration
             $table->string('contato_denunciante');
             $table->string('cpf_denunciante');
             $table->string('rg_denunciante');
+            */
 
         });
     }

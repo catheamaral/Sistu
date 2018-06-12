@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
-    //protected $table="pessoa";
+    protected $table="pessoa";
 
 	protected $fillable = [
 
 		'nome',
 		'data_nascimento',
-		'genitor'
+		'genitor',
 		'contato_genitor',
 		'cpf_genitor',
 		'rg_genitor',
@@ -32,6 +32,8 @@ class Pessoa extends Model
     	'contato_denunciante',
     	'cpf_denunciante',
     	'rg_denunciante',
+    	'oriDenuncia',
+    	'LocalOcorrencia'
     ];
 
     public function registroAtendimento()

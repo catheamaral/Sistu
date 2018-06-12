@@ -36,8 +36,9 @@ class UpdatePessoaTable extends Migration
             $table->string('complemento', 45)->nullable();
             $table->string('estado', 10);
             $table->string('cidade', 10);
+            $table->string('LocalOcorrencia', 60);
 
-            $table->enum('ori_denuncia',['local','tel','mp','je'])->default('local');
+            $table->enum('oriDenuncia',['local','tel','mp','je'])->default('local');
 
             $table->string('denunciante')->nullable();
             $table->string('contato_denunciante')->nullable();
@@ -56,7 +57,7 @@ class UpdatePessoaTable extends Migration
     {
         Schema::table('pessoa', function (Blueprint $table) {
             
-            $table->dropColumn('nome'; 
+            $table->dropColumn('nome'); 
             $table->dropColumn('genitor'); 
             $table->dropColumn('genitora'); 
             $table->dropColumn('responsavel');

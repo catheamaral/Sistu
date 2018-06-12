@@ -13,11 +13,11 @@ class CreateAndamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('andamentos', function (Blueprint $table) {
+        Schema::create('andamento', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->text('descricao', 500);
-            $table->timestamps('data_hora');
+            $table->text('descricao');
+            $table->timestamp('data_hora');
 
             $table->unsignedInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status');

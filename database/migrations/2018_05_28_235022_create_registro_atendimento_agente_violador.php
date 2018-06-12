@@ -19,7 +19,7 @@ class CreateRegistroAtendimentoAgenteViolador extends Migration
             $table->foreign('registro_atendimento_id')->references('id')->on('registro_atendimento');
 
             $table->unsignedInteger('agente_violador_id');
-            $table->foreign('agente_violador_id')->references('id')->on('agente_violadors');
+            $table->foreign('agente_violador_id')->references('id')->on('agente_violador');
 
             $table->timestamps();
         });

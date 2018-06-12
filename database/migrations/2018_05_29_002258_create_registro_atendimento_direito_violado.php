@@ -18,8 +18,8 @@ class CreateRegistroAtendimentoDireitoViolado extends Migration
             $table->unsignedInteger('registro_atendimento_id');
             $table->foreign('registro_atendimento_id')->references('id')->on('registro_atendimento');
 
-            $table->unsignedInterger('direito_violado_id');
-            4table->foreign('direito_violado_id')->references('id')->on('direito_violado');
+            $table->unsignedInteger('direito_violado_id');
+            $table->foreign('direito_violado_id')->references('id')->on('direito_violado');
             
             $table->timestamps();
         });

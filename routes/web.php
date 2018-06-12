@@ -43,10 +43,6 @@ Route::get('/third', function () {
     return view('third');
 });
 
-Route::get('/meusProcessos', function () {
-    return view('meusProcessos');
-});
-
 Route::get('/third', function () {
     return view('third');
 });
@@ -99,6 +95,13 @@ Route::get('listagem', function () {
     return view('listagem', ['info' => $info]);
 });
 
+Route::get('meusProcessos', function () {
+
+    $info = DB::table('pessoa')->get();
+
+    return view('meusProcessos', ['info' => $info]);
+});
+
 
 ########################################################################ROTAS DE LOGIN
 Auth::routes();
@@ -106,8 +109,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 ##################################################################################
-##################################################################################
 
 Route::post('np/okay/input_edit/edit/{id}', 'pessoa_cont@update');
 
 ##################################################################################
+
