@@ -30,6 +30,13 @@ Route::get('/estatistica', function () {
 Route::get('/estatistica_atendente', function () {
     return view('estatistica_atendente');
 });
+############################################################# HOME ADM
+Route::get('/conselheiros', function () {
+
+    $funcionario = DB::table('funcionario')->get();
+
+    return view('conselheiro_adm', ['funcionario' => $funcionario]);
+});
 #############################################################
 
 Route::get('/processo_deliberacao', function () {
@@ -91,11 +98,14 @@ Route::get('input/', 'pessoa_cont@index' );
 Route::get('/input_atendente', function () {
     return view('input_atendente');
 });
+################################################################# INPUT ADM
+Route::get('/input_adm', 'pessoa_cont_adm@index' );
 
 //Route::get('listagem', 'listagem_cont@index' );
 Route::post('verify', 'pessoa_cont@store');
 
 Route::post('verify_atendente', 'pessoa_cont_atendente@store');
+Route::post('verify_adm', 'pessoa_cont_adm@store');
 ##################################################################################################3############
 #ROTAS DE LISTAGEM
 ################################################################################################################

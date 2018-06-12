@@ -26,33 +26,34 @@ function formatar(mascara, documento){
       </div>
 
       <form class="w3-container w3-row-padding w3-white" id="form" action="verify_adm" method="post">
+      @csrf
         <p>
             <div class="w3-col s12">
-              <select class="w3-select" name="perfil">
+              <select class="w3-select" name="perfil_id">
                 <option value="" disabled selected> Qual o Perfil? </option>
                 <option value="1"> Atendente</option>
-                <option value="2"> Conselheiro </option>
+                <option value="2"> Conselheiro Tutelar </option>
               </select></p></br>
             </div>
         <p>
-          <div class="w3-col s10">
+          <div class="w3-col s8">
             <input class="w3-input" type="text" name="nome" id="nome" placeholder="Nome Completo"></p>
           </div>
         <p>
-          <div class="w3-col s2">  
-            <input class="w3-input" maxlength="10" type="text" placeholder="Data" name="data_nascimento" onkeypress="formatar('##/##/####', this)" name="dtn"></p>
+          <div class="w3-col s4">  
+            <input class="w3-input" maxlength="10" type="date" placeholder="Data" name="data_nascimento"></p>
           </div>
         <p>
           <div class="w3-col s6">
-            <input class="w3-input" name="rgConselheiro" type="text" placeholder="RG"></p>
+            <input class="w3-input" name="rg" type="text" placeholder="RG"></p>
           </div>
         <p>
           <div class="w3-col s6">
-            <input class="w3-input" name="cpfConselheiro" type="text" placeholder="CPF"></p>
+            <input class="w3-input" name="cpf" type="text" placeholder="CPF"></p>
           </div>
         <p>
           <div class="w3-col s12">
-            <input class="w3-input" name="enderecoConselheiro" type="text" placeholder="Endereço"></p>
+            <input class="w3-input" name="endereco" type="text" placeholder="Endereço"></p>
           </div>
         <p>
           <div class="w3-col s12">
@@ -69,7 +70,7 @@ function formatar(mascara, documento){
         <div class="w3-panel">
           <p>
             <div class="w3-col s12">
-              <select class="w3-select" name="ori_Denuncia">
+              <select class="w3-select" name="area_atuacao_id">
                 <option value="" disabled selected> Qual Conselho irá atuar?</option>
                 <option value="1"> 1º Conselho Tutelar</option>
                 <option value="2"> 2º Conselho Tutelar</option>

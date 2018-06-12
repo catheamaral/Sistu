@@ -28,14 +28,29 @@ class HomeController extends Controller
     public function index()
     {   
 
+
+        #####################  IDENTIFICANDO O USER
+
         $user = Auth::user()->perfil_id;
+        #####################
+        /*
+        $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+        */
+
+        $funcionario = DB::table('funcionario')->get();
+
+
         if ($user == 1) {
             # code...
             return view('estatistica');
         }elseif($user == 2){
             return view('estatistica_atendente');
         }else{
-            #return view('');
+            return view('conselheiro_adm', ['funcionario' => $funcionario]);
         }
     }
 }
