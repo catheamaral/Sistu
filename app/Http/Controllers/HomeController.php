@@ -33,24 +33,22 @@ class HomeController extends Controller
 
         $user = Auth::user()->perfil_id;
         #####################
-        /*
+        
         $conselheiros = DB::table('funcionario')
-            ->join('perfil', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
             ->get();
-        */
 
-        $funcionario = DB::table('funcionario')->get();
 
 
         if ($user == 1) {
             # code...
-            return view('estatistica');
-        }elseif($user == 2){
             return view('estatistica_atendente');
+        }elseif($user == 2){
+            return view('estatistica');
         }else{
-            return view('conselheiro_adm', ['funcionario' => $funcionario]);
+            return view('conselheiro_adm', ['conselheiros' => $conselheiros]);
         }
     }
 }

@@ -33,9 +33,13 @@ Route::get('/estatistica_atendente', function () {
 ############################################################# HOME ADM
 Route::get('/conselheiros', function () {
 
-    $funcionario = DB::table('funcionario')->get();
+    $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->get();
 
-    return view('conselheiro_adm', ['funcionario' => $funcionario]);
+    return view('conselheiro_adm', ['conselheiros' => $conselheiros]);
 });
 #############################################################
 
@@ -96,7 +100,19 @@ Route::get('np/okay/input_edit/{data}',  function ($data) {
 Route::get('input/', 'pessoa_cont@index' );
 ################################################################ INPUT ATENDENTE
 Route::get('/input_atendente', function () {
-    return view('input_atendente');
+
+    $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->where('perfil.id', 2)
+            ->get();
+
+    $linhas = count($conselheiros);
+
+    $i = 1;
+
+    return view('input_atendente', ['conselheiros' => $conselheiros, 'linhas' => $linhas, 'i' => $i]);
 });
 ################################################################# INPUT ADM
 Route::get('/input_adm', 'pessoa_cont_adm@index' );

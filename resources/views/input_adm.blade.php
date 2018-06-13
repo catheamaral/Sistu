@@ -49,7 +49,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s6">
-            <input class="w3-input" name="cpf" type="text" placeholder="CPF"></p>
+            <input class="w3-input" name="cpf" maxlength="11" type="text" placeholder="CPF"></p>
           </div>
         <p>
           <div class="w3-col s12">

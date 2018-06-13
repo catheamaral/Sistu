@@ -16,8 +16,27 @@ class CreateAreaAtuacaosTable extends Migration
         Schema::create('area_atuacao', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('descricao');
+            $table->string('atuacao');
         });
+
+        DB::table('area_atuacao')->insert(
+            array(
+                'id' => 1,
+                'atuacao' => '1º Conselho Tutelar'
+            )
+        );
+        DB::table('area_atuacao')->insert(
+            array(
+                'id' => 2,
+                'atuacao' => '2º Conselho Tutelar'
+            )
+        );
+        DB::table('area_atuacao')->insert(
+            array(
+                'id' => 3,
+                'atuacao' => '3º Conselho Tutelar'
+            )
+        );
     }
 
     /**

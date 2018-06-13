@@ -154,10 +154,12 @@ function formatar(mascara, documento){
         <div class="w3-col s12">
             <select class="w3-select" name="Conse_envio">
             <option value="" disabled selected> Conselheiros Disponiveis</option>
-            <option value="1"> Conselheiro 1</option>
-            <option value="2"> Conselheiro 2</option>
-            <option value="3"> Conselheiro 3</option>
-            <option value="4"> Conselheiro 4</option>
+            @foreach($conselheiros as $data)
+              @if($i < $linhas){
+                <option value="{{$i}}"> {{$data->nome}}</option>
+                $i = $i++;
+              }@endif
+            @endforeach
             </select></p></br></p>
         </div>
       </div>

@@ -19,6 +19,25 @@ class CreatePerfilTable extends Migration
             $table->string('descricao');
             
         });
+
+        DB::table('perfil')->insert(
+            array(
+                'id' => 1,
+                'descricao' => 'Atendente'
+            )
+        );
+        DB::table('perfil')->insert(
+            array(
+                'id' => 2,
+                'descricao' => 'Conselheiro Tutelar'
+            )
+        );
+        DB::table('perfil')->insert(
+            array(
+                'id' => 3,
+                'descricao' => 'Administrador'
+            )
+        );
     }
 
     /**

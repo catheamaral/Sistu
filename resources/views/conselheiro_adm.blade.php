@@ -21,14 +21,16 @@
   <div class="w3-col s12 w3-row-padding">
     <table class="w3-card-4 w3-table-all w3-margin-top" id="myTable">
       <tr class="w3-green">
-        <th style="width:50%;">Nome</th>
+        <th style="width:40%;">Nome</th>
         <th style="width:20%;">Area de Atuação</th>
-        <th style="width:40%;">Opções</th>
+        <th style="width:20%;">Perfil</th>
+        <th style="width:20%;">Opções</th>
       </tr>
-    @foreach($funcionario as $data)
+    @foreach($conselheiros as $data)
       <tr>
         <td>{{$data->nome}}</td>
-        <td>2º Conselho</td>
+        <td>{{$data->atuacao}}</td>
+        <td>{{$data->descricao}}</td>
         <td>
           <div class="w3-col w3-half" >
             <button class="w3-button" title="Identidade" ><i class="fa fa-id-card"></i> Identificação</button>
