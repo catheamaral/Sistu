@@ -33,7 +33,7 @@
         <td>{{$data->descricao}}</td>
         <td>
           <div class="w3-col w3-half" >
-            <button class="w3-button" title="Identidade" ><i class="fa fa-id-card"></i> Identificação</button>
+            <a class="w3-button" href="/info_conselheiro/{{$data->id}}" ><i class="fa fa-id-card"></i> Identificação</a>
           </div>
         </td>
       </tr>

@@ -45,7 +45,7 @@ class pessoa_cont_adm extends Controller
         $conselheiros = DB::table('funcionario')
             ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
             ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
-            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
             ->get();
 
         return view('conselheiro_adm', ['conselheiros' => $conselheiros]);

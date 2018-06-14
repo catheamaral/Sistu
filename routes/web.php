@@ -22,6 +22,21 @@ Route::get('/conselheiro', function () {
 Route::get('/novos', function () {
     return view('novos');
 });
+
+########################################### INFORMAÇÃO DOS CONSELHEIROS
+Route::get('/info_conselheiro/{id}', function ($id) {
+
+    $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao','funcionario.data_nascimento')
+            ->where('funcionario.id', $id)
+            ->get();
+
+    return view('info_conselheiro', ['conselheiros' => $conselheiros]);
+});
+###########################################
+
 ###########################################33 HOME CONSELHEIRO
 Route::get('/estatistica', function () {
     return view('estatistica');
@@ -36,8 +51,9 @@ Route::get('/conselheiros', function () {
     $conselheiros = DB::table('funcionario')
             ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
             ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
-            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao', 'funcionario.id')
             ->get();
+
 
     return view('conselheiro_adm', ['conselheiros' => $conselheiros]);
 });

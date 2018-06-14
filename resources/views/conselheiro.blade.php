@@ -29,37 +29,6 @@
     </table>
     <hr>
   </div>
-  <div id="id01" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-            <div class="w3-container">
-              <h3>Identificação do Conselheiro</h3><p></p>
-              <div class="w3-col s12">
-                <ul class="w3-ul">
-                    <div class="w3-container"><p></p>
-                      <div class="w3-col s12">
-                        <label >Nome: 
-                          <li class="w3-hover-white"> NOME </li>
-                        </label><p></p>
-                      </div>
-                      <div class="w3-col s8">
-                        <label >Conselho Tutelar: 
-                          <li class="w3-hover-white"> 2º Conselho Tutelar </li>
-                        </label><p></p>
-                      </div>
-                      <div class="w3-col s4">
-                        <label> Idade:
-                          <li class="w3-hover">IDADE</li>
-                        </label><p></p>
-                      </div>
-                      </div> 
-                </ul>
-              </div> 
-            </div>
-            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-              <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red w3-right">X</button>
-            </div>
-          </div>
-        </div>
 </div>
 
 <script>
