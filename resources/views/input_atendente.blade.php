@@ -73,7 +73,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input"  name="contato_genitor" maxlength="13" type="text" placeholder="Contato"></p>
+            <input class="w3-input"  name="contato_genitor" maxlength="11" type="text" placeholder="Contato"></p>
           </div>
         <p>
           <div class="w3-col s2">
@@ -81,7 +81,7 @@ function formatar(mascara, documento){
           </div>
          <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="14" type="text" placeholder="CPF" name="cpf_genitor" ></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_genitor" ></p>
           </div>
         <p>
           <div class="w3-col s6">
@@ -89,7 +89,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" name="contato_genitora" maxlength="13" type="text" placeholder="Contato"></p>
+            <input class="w3-input" name="contato_genitora" maxlength="11" type="text" placeholder="Contato"></p>
           </div>
         <p>
           <div class="w3-col s2">
@@ -97,7 +97,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="14" type="text" placeholder="CPF" name="cpf_genitora" ></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_genitora" ></p>
           </div>
         <p>
           <div class="w3-col s6">
@@ -105,7 +105,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" name="contato_responsavel" maxlength="13" type="text" placeholder="Contato"></p>
+            <input class="w3-input" name="contato_responsavel" maxlength="11" type="text" placeholder="Contato"></p>
           </div>
         <p>
           <div class="w3-col s2">
@@ -113,7 +113,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="14" type="text" placeholder="CPF" name="cpf_responsavel" ></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_responsavel" ></p>
           </div>
          <p>
           <div class="w3-col s6">
@@ -121,7 +121,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" name="contato_denunciante" maxlength="13" type="text" placeholder="Contato"></p>
+            <input class="w3-input" name="contato_denunciante" maxlength="11" type="text" placeholder="Contato"></p>
           </div>
         <p>
           <div class="w3-col s2">
@@ -129,7 +129,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="14" type="text" placeholder="CPF" name="cpf_denunciante"></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_denunciante"></p>
           </div>
         <p>
           <div class="w3-col s12">
@@ -152,13 +152,12 @@ function formatar(mascara, documento){
       <p>
       <div class="w3-container">
         <div class="w3-col s12">
-            <select class="w3-select" name="Conse_envio">
+            <select class="w3-select" name="funcionario_id">
             <option value="" disabled selected> Conselheiros Disponiveis</option>
             @foreach($conselheiros as $data)
-              @if($i < $linhas){
-                <option value="{{$i}}"> {{$data->nome}}</option>
-                $i = $i++;
-              }@endif
+              <? while ($i <= $linhas) { ?>
+                <option value="<? echo $i ?>"> {{$data->nome}}</option>
+              <? $i++; } ?>
             @endforeach
             </select></p></br></p>
         </div>

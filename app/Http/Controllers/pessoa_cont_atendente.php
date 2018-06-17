@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\pessoa;
+
+use App\Registro_atendimento;
 
 class pessoa_cont_atendente extends Controller
 {
@@ -17,7 +21,19 @@ class pessoa_cont_atendente extends Controller
      */
     public function index()
     {
-        //
+
+        $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->where('perfil.id', 2)
+            ->get();
+
+        $linhas = count($conselheiros);
+
+        $i = 1;
+
+        return view('input_atendente', ['conselheiros' => $conselheiros, 'linhas' => $linhas, 'i' => $i]);
     }
 
     /**
@@ -39,7 +55,11 @@ class pessoa_cont_atendente extends Controller
     public function store(Request $request)
     {
 
-        $pessoa = Pessoa::create($request->all());   
+        $id = Auth::user()->id;
+        dd($request);
+        $pessoa = Pessoa::create($request->all());
+        
+        //$pessoa = Registro_atendimento::create($request->all());
 
         $info = DB::table('pessoa')->get();
 

@@ -44,8 +44,8 @@ class pessoa_cont extends Controller
      */
     public function store(Request $request)
     {
-        $pessoa = Pessoa::create($request->all());        
-
+        $pessoa = Pessoa::create($request->all());
+        
         return view('processos', ['pessoa' => $pessoa, 'cadastrado' => $request['cadastrado']]);
     }
 

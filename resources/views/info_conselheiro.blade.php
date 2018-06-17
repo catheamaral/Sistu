@@ -23,27 +23,27 @@
             <div class="w3-container"><p></p>
                 <div class="w3-col s6">
                     <label >Nome: 
-                        <li class="w3-hover-white"> {{$data->nome}} </li>
+                        <li class="w3-hover-white"> <strong> {{$data->nome}} </strong> </li>
                     </label><p></p>
                 </div>
                 <div class="w3-col s4">
                     <label> Idade:
-                        <li class="w3-hover">{{$idade}}</li>
+                        <li class="w3-hover"> <strong>{{$idade}}</strong></li>
                     </label><p></p>
                 </div>
                 <div class="w3-col s2">
                     <label >Data Nascimento: 
-                        <li class="w3-hover-white"> {{$date}} </li>
+                        <li class="w3-hover-white"> <strong> {{$date}}</strong> </li>
                     </label><p></p>
                 </div>
                 <div class="w3-col s6">
                     <label >Área de Atuação: 
-                        <li class="w3-hover-white"> {{$data->descricao}} </li>
+                        <li class="w3-hover-white"> <strong> {{$data->descricao}} </strong></li>
                     </label><p></p>
                 </div>
                 <div class="w3-col s6">
                     <label >Conselho Tutelar: 
-                        <li class="w3-hover-white"> {{$data->atuacao}} </li>
+                        <li class="w3-hover-white"> <strong> {{$data->atuacao}} </strong></li>
                     </label><p></p>
                 </div>
             </div>

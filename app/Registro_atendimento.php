@@ -10,7 +10,9 @@ class Registro_atendimento extends Model
 
     protected $fillable = [
 
-        'local'
+        'local',
+        'funcionario_id',
+        'pessoa_id'
     	
     ];
 

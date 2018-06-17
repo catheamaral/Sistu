@@ -115,21 +115,7 @@ Route::get('np/okay/input_edit/{data}',  function ($data) {
 ################################################################ INPUT CONSELHEIRO
 Route::get('input/', 'pessoa_cont@index' );
 ################################################################ INPUT ATENDENTE
-Route::get('/input_atendente', function () {
-
-    $conselheiros = DB::table('funcionario')
-            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
-            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
-            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
-            ->where('perfil.id', 2)
-            ->get();
-
-    $linhas = count($conselheiros);
-
-    $i = 1;
-
-    return view('input_atendente', ['conselheiros' => $conselheiros, 'linhas' => $linhas, 'i' => $i]);
-});
+Route::get('/input_atendente', 'pessoa_cont_atendente@index');
 ################################################################# INPUT ADM
 Route::get('/input_adm', 'pessoa_cont_adm@index' );
 
@@ -138,7 +124,7 @@ Route::post('verify', 'pessoa_cont@store');
 
 Route::post('verify_atendente', 'pessoa_cont_atendente@store');
 Route::post('verify_adm', 'pessoa_cont_adm@store');
-##################################################################################################3############
+################################################################################################################
 #ROTAS DE LISTAGEM
 ################################################################################################################
 Route::get('listagem', function () {

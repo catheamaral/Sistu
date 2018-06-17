@@ -16,6 +16,6 @@ class Perfil extends Model
 
     public function funcionario()
     {
-        return $this->hasMany('App\Funcionatio');
+        return $this->hasMany('App\Funcionario');
     }
 }
