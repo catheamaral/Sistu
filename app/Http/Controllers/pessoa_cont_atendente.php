@@ -25,15 +25,13 @@ class pessoa_cont_atendente extends Controller
         $conselheiros = DB::table('funcionario')
             ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
             ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
-            ->select('funcionario.nome', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
             ->where('perfil.id', 2)
             ->get();
 
         $linhas = count($conselheiros);
 
-        $i = 1;
-
-        return view('input_atendente', ['conselheiros' => $conselheiros, 'linhas' => $linhas, 'i' => $i]);
+        return view('input_atendente', ['conselheiros' => $conselheiros, 'linhas' => $linhas]);
     }
 
     /**
@@ -56,11 +54,18 @@ class pessoa_cont_atendente extends Controller
     {
 
         $id = Auth::user()->id;
-        dd($request);
         $pessoa = Pessoa::create($request->all());
-        
-        //$pessoa = Registro_atendimento::create($request->all());
+        $info = DB::table('pessoa')
+                ->select('id')
+                ->latest()
+                ->first();
 
+        DB::table('registro_atendimento')
+                    ->insert([
+                        'funcionario_id' => $request['funcionario_id'],
+                        'pessoa_id' => $info->id
+                    ]);
+        
         $info = DB::table('pessoa')->get();
 
         return view('listagem_atendente', ['info' => $info]);    

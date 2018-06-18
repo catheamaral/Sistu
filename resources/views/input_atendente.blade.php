@@ -155,9 +155,7 @@ function formatar(mascara, documento){
             <select class="w3-select" name="funcionario_id">
             <option value="" disabled selected> Conselheiros Disponiveis</option>
             @foreach($conselheiros as $data)
-              <? while ($i <= $linhas) { ?>
-                <option value="<? echo $i ?>"> {{$data->nome}}</option>
-              <? $i++; } ?>
+                <option value="{{$data->id}}"> {{$data->nome}}</option>
             @endforeach
             </select></p></br></p>
         </div>

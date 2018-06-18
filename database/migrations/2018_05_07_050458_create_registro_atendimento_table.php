@@ -16,7 +16,7 @@ class CreateRegistroAtendimentoTable extends Migration
         Schema::create('registro_atendimento', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->text('local', 50);
+            $table->text('local', 50)->nullable();
 
             $table->unsignedInteger('funcionario_id');
             $table->foreign('funcionario_id')->references('id')->on('funcionario');

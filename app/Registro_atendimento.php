@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registro_atendimento extends Model
 {
-    //protected $table="registro_atendimento";
+    protected $table="registro_atendimento";
 
     protected $fillable = [
 
