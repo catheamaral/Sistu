@@ -79,6 +79,44 @@ function formatar(mascara, documento){
             </div>
         </div>
     </div>
+    <hr>
+    <div class="w3-card-2">
+      <div class="w3-container w3-grey">
+        <h2>Login</h2>
+      </div>
+    
+        <div class="w3-panel">
+          <p>
+            <div class="w3-col s12">
+              <p>
+              <div class="w3-col s12">
+                  <input id="email" class="w3-input" name="email" type="text" placeholder="Login"></p>
+              </div>
+                  @if ($errors->has('email'))
+                      <span class="invalid-feedback">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+                <div class="w3-col s12">
+                  <input id="password" class="w3-input" name="password" type="password" placeholder="Senha"></p>
+                </div>
+                  @if ($errors->has('email'))
+                      <span class="invalid-feedback">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+                  <div class="w3-col s12">
+                    <input id="password-cofirm" class="w3-input" name="password-confirm" type="password" placeholder="Confirme sua Senha"></p>
+                  </div>
+                  @if ($errors->has('email'))
+                      <span class="invalid-feedback">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+              </div>
+            </div>
+        </div>
+    </div>
   </form>
   <hr>
   <input class="w3-button w3-green" type="submit" onclick="document.getElementById('form').submit()" value="Enviar" ></p>

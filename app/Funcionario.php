@@ -22,6 +22,8 @@ class Funcionario extends Model
     	
     ];
 
+    protected $hidden = [ 'password'];
+
     public function perfil()
     {
         return $this->belongsTo('App\Perfil');

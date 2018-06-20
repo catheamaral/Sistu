@@ -22,7 +22,7 @@ class CreateDireitoVioladoTable extends Migration
             $table->boolean('respect');
             $table->boolean('dig');
             $table->boolean('ConvF');
-            $table->boolean('ConvComunitario');
+            $table->boolean('ConvComunitaria');
             $table->boolean('educacao');
             $table->boolean('cultura');
             $table->boolean('esporte');

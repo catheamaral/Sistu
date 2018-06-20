@@ -10,12 +10,12 @@ class Agente_violador extends Model
 
 	protected $fillable = [
 
-    	'estado',
-    	'sociedade',
-    	'pais',
-    	'responsavel',
-    	'propria_conduta',
-        'observacao'
+    	'Estado',
+    	'Sociedade',
+    	'Pais',
+    	'respon',
+    	'Propria',
+        'pro2'
     	
     ];
 

@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 use App\Pessoa;
 
-use App\Direito_violado;   
+use App\Direito_violado;
+
+use App\Agente_violador;
 
 class pessoa_cont extends Controller
 {
@@ -82,7 +84,7 @@ class pessoa_cont extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        //dd($id);
         $info = Pessoa::find($id);
         $info->nome = $request['nome'];
         $info->data_nascimento = $request['data_nascimento'];
@@ -114,8 +116,40 @@ class pessoa_cont extends Controller
 
         #################################### Direito Violado
 
-        $direito = Direito_violado::create($request->all()); 
-        dd($direito);
+        $direito = Direito_violado::create($request->all());
+
+        $last_dv = DB::table('direito_violado')
+                    ->select('id')
+                    ->latest()
+                    ->first();
+        
+        $lol = DB::table('registro_atendimento')->where('pessoa_id', $id)->first();
+
+        DB::table('registroatend_direitoviolado')
+            ->insert([
+            'created_at' => date("Y-m-d H:i:s"),
+            'registro_atendimento_id' => $lol->id,
+            'direito_violado_id' => $last_dv->id
+        ]);
+        
+        #################################### Agente Violador
+
+        $violador = Agente_violador::create($request->all());
+
+        $last_av = DB::table('direito_violado')
+                    ->select('id')
+                    ->latest()
+                    ->first();
+        
+        DB::table('registroatend_agenteviolador')
+            ->insert([
+            'created_at' => date("Y-m-d H:i:s"),
+            'registro_atendimento_id' => $lol->id,
+            'agente_violador_id' => $last_av->id
+        ]);
+
+
+        ####################################
 
 
         $pessoa = DB::table('pessoa')

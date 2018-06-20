@@ -145,63 +145,63 @@ function formatar(mascara, documento){
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="vida"><label> Vida</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="vida"><label> Vida</label></p>
             </div>
           <p>
             <div class="w3-col s10">
-              <input class="w3-check" type="checkbox" name="saude"><label> Saúde</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="saude"><label> Saúde</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="freedom"><label> Liberdade</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="freedom"><label> Liberdade</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="respect"><label> Respeito</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="respect"><label> Respeito</label></p>
             </div>
           <p>
             <div class="w3-col s8">
-              <input class="w3-check" type="checkbox" name="dig"><label> Dignidade</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="dig"><label> Dignidade</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="ConvF"><label> Familiar</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="ConvF"><label> Familiar</label></p>
             </div>
           <p>
             <div class="w3-col s10">
-              <input class="w3-check" type="checkbox" name="ConvComunitaria"><label> Comunitario</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="ConvComunitaria"><label> Comunitario</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="educacao"><label> Educação</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="educacao"><label> Educação</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="cultura"><label> Cultura</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="cultura"><label> Cultura</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="esporte"><label> Esporte</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="esporte"><label> Esporte</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="lazer"><label> Lazer</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="lazer"><label> Lazer</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s4">
-              <input class="w3-check" type="checkbox" name="profissa"><label> Profissionalização</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="profissa"><label> Profissionalização</label></p>
             </div>
           <p>
             <div class="w3-col s4">
-              <input class="w3-check" type="checkbox" name="proTraba"><label> Proteção no Trabalho</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="proTraba"><label> Proteção no Trabalho</label></p>
             </div>
         <p>
             <div class="w3-col s12">
@@ -217,32 +217,32 @@ function formatar(mascara, documento){
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Estado"><label> Estado</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="Estado"><label> Estado</label></p>
             </div>
           <p>
             <div class="w3-col s10">
-              <input class="w3-check" type="checkbox" name="Sociedade"><label> Sociedade</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="Sociedade"><label> Sociedade</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Pais"><label> Pais</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="Pais"><label> Pais</label></p>
             </div>
           <p>
             <div class="w3-col s10">
-              <input class="w3-check" type="checkbox" name="Responsavel"><label> Responsável</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="respon"><label> Responsável</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s12">
-              <input class="w3-check" type="checkbox" name="Propria"><label> Em razão a sua propria conduta</label></p>
+              <input class="w3-check" value="1" type="checkbox" name="Propria"><label> Em razão a sua propria conduta</label></p>
             </div>
 		<p>
           <div class="w3-col s12">
             <textarea placeholder="Quais..." name="pro2"></textarea></p>
-          </div> 
+          </div>
 		</div>
     </div>
     <hr>

@@ -16,12 +16,12 @@ class CreateAgenteVioladorsTable extends Migration
         Schema::create('agente_violador', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->boolean('estado');
-            $table->boolean('sociedade');
-            $table->boolean('pais');
-            $table->boolean('responsavel');
-            $table->boolean('propria_conduta');
-            $table->text('observacao', 500)->nullable();
+            $table->boolean('Estado');
+            $table->boolean('Sociedade');
+            $table->boolean('Pais');
+            $table->boolean('respon');
+            $table->boolean('Propria');
+            $table->text('pro2', 500)->nullable();
         });
     }
 

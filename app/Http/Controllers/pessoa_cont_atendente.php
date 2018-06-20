@@ -85,8 +85,9 @@ class pessoa_cont_atendente extends Controller
                 ->join('status', 'status.id', '=', 'andamento.status_id' )
                 ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
                 ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
-                ->select('pessoa.*','status.descricao')
+                ->select('pessoa.*','status.*')
                 ->get();
+        
         
         return view('listagem_atendente', ['info' => $info]);    
     }

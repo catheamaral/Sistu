@@ -6,22 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Direito_violado extends Model
 {
-    //protected $table="direito_violado";
+    protected $table="direito_violado";
 
     protected $fillable = [
     	'vida',
     	'saude',
-        'freedo',
-        'respec',
+        'freedom',
+        'respect',
 		'dig',       
 		'ConvF',
-        'ConvCounitario',
-        'educaco',
+        'ConvComunitaria',
+        'educacao',
         'cultura',
         'esporte',
         'lazer',
         'profissa',
         'proTraba',
+        'pro',
     ];
 
     public function registro_atendimento(){

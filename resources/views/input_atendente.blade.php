@@ -116,22 +116,24 @@ function formatar(mascara, documento){
             <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_responsavel" ></p>
           </div>
          <p>
-          <div class="w3-col s6">
-            <input class="w3-input" type="text" placeholder="Denunciante" name="denunciante"></p>
-          </div>
-        <p>
-          <div class="w3-col s2">
-            <input class="w3-input" name="contato_denunciante" maxlength="11" type="text" placeholder="Contato"></p>
-          </div>
-        <p>
-          <div class="w3-col s2">
-            <input class="w3-input" maxlength="14" type="text" placeholder="RG" name="rg_denunciante"></p>
-          </div>
-        <p>
-          <div class="w3-col s2">
-            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_denunciante"></p>
-          </div>
-        <p>
+         <p>   
+            <div class="w3-col s6">
+              <input class="w3-input" type="text" placeholder="Denunciante" name="denunciante"></p>
+            </div>
+          <p>
+            <div class="w3-col s2">
+              <input class="w3-input" name="contato_denunciante" maxlength="11" type="text" placeholder="Contato"></p>
+            </div>
+          <p>
+
+            <div class="w3-col s2">
+              <input class="w3-input" maxlength="14" type="text" placeholder="RG" name="rg_denunciante"></p>
+            </div>
+          <p>
+            <div class="w3-col s2">
+              <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_denunciante"></p>
+            </div>
+          <p>
           <div class="w3-col s12">
             <input class="w3-input" name="LocalOcorrencia" type="text" placeholder="Local do Caso"></p>
           </div>
