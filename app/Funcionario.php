@@ -18,6 +18,7 @@ class Funcionario extends Model
         'complemento',
         'perfil_id',
         'area_atuacao_id',
+        'user_id',
     	
     	
     ];

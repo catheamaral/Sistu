@@ -62,9 +62,18 @@
                             <label for="perfil_id" class="col-md-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
 
                             <div class="col-md-6">
-                                <input id="perfil_id" type="perfil_id" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="perfil_id" value="{{ old('perfil_id') }}" required>
+                                <input id="perfil_id" type="perfil_id" name="perfil_id" value="{{ old('perfil_id') }}" required>
                             </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <label for="ativo" class="col-md-4 col-form-label text-md-right">{{ __('Ativo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ativo" type="ativo" name="ativo" value="{{ old('ativo') }}" required>
+                            </div>
+                        </div>
+                    
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

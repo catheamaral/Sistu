@@ -25,7 +25,7 @@
     <input class="w3-input w3-border w3-padding" type="text" placeholder="Por RG" id="rg" onkeyup="myFunction2()"></p>
   </div>
   <div class="w3-col s2">
-    <button class="w3-button w3-green" onclick="javascript:location='{{url('/input')}}'"><i class="fa fa-pencil"></i>  Novo</button>
+    <button class="w3-button w3-green" onclick="javascript:location='{{url('/input_atendente')}}'"><i class="fa fa-pencil"></i>  Novo</button>
   </div>
   <div class="w3-col s12">
     <table class="w3-card-4 w3-table-all w3-margin-top" id="myTable">
@@ -40,7 +40,7 @@
         <td>{{$data->nome}}</td>
         <td>{{$data->cpf_responsavel}}</td>
         <td>{{$data->rg_responsavel}}</td>
-        <td>Enviado Para Aceitação</td>
+        <td>{{$data->descricao}}</td>
       </tr>
       @endforeach
     </table>

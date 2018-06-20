@@ -59,15 +59,35 @@ class pessoa_cont_atendente extends Controller
                 ->select('id')
                 ->latest()
                 ->first();
-
+        
+        
         DB::table('registro_atendimento')
                     ->insert([
+                        'created_at' => date("Y-m-d H:i:s"),
                         'funcionario_id' => $request['funcionario_id'],
                         'pessoa_id' => $info->id
                     ]);
         
-        $info = DB::table('pessoa')->get();
-
+        $last = DB::table('registro_atendimento')
+                    ->select('id')
+                    ->latest()
+                    ->first();
+                    
+        DB::table('andamento')
+                ->insert([
+                    'descricao' => 'Não Sei oq é',
+                    'data_hora' => date("Y-m-d H:i:s"),
+                    'status_id' => 1,
+                    'registro_atendimento_id' => $last->id
+        ]);
+        
+        $info = DB::table('andamento')
+                ->join('status', 'status.id', '=', 'andamento.status_id' )
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
+                ->select('pessoa.*','status.descricao')
+                ->get();
+        
         return view('listagem_atendente', ['info' => $info]);    
     }
 

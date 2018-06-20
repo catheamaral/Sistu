@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('ativo');
 
             $table->unsignedInteger('perfil_id');
             $table->foreign('perfil_id')->references('id')->on('perfil');

@@ -136,7 +136,12 @@ Route::get('listagem', function () {
 
 Route::get('listagem_atendente', function () {
 
-    $info = DB::table('pessoa')->get();
+    $info = DB::table('andamento')
+                ->join('status', 'status.id', '=', 'andamento.status_id' )
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
+                ->select('pessoa.*','status.descricao')
+                ->get();
 
     return view('listagem_atendente', ['info' => $info]);
 });
