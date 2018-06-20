@@ -11,18 +11,17 @@ class Direito_violado extends Model
     protected $fillable = [
     	'vida',
     	'saude',
-    	'liberdade',
-    	'respeito',
-    	'dignidade',
-    	'familiar',
-    	'comunitario',
-    	'educacao',
-    	'cultura',
-    	'esporte',
-    	'lazer',
-    	'profissional',
-        'protecao_no_trabalho',
-    	'observacao'
+        'freedo',
+        'respec',
+		'dig',       
+		'ConvF',
+        'ConvCounitario',
+        'educaco',
+        'cultura',
+        'esporte',
+        'lazer',
+        'profissa',
+        'proTraba',
     ];
 
     public function registro_atendimento(){

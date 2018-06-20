@@ -179,25 +179,25 @@ function formatar(mascara, documento){
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Educacao"><label> Educação</label></p>
+              <input class="w3-check" type="checkbox" name="educacao"><label> Educação</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Cultura"><label> Cultura</label></p>
+              <input class="w3-check" type="checkbox" name="cultura"><label> Cultura</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Esporte"><label> Esporte</label></p>
+              <input class="w3-check" type="checkbox" name="esporte"><label> Esporte</label></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-check" type="checkbox" name="Lazer"><label> Lazer</label></p>
+              <input class="w3-check" type="checkbox" name="lazer"><label> Lazer</label></p>
             </div>
         </div>
         <div class="w3-panel w3-border">
           <p>
             <div class="w3-col s4">
-              <input class="w3-check" type="checkbox" name="Profissa"><label> Profissionalização</label></p>
+              <input class="w3-check" type="checkbox" name="profissa"><label> Profissionalização</label></p>
             </div>
           <p>
             <div class="w3-col s4">

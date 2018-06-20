@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\Pessoa;
 
+use App\Direito_violado;   
+
 class pessoa_cont extends Controller
 {
     /**
@@ -80,7 +82,7 @@ class pessoa_cont extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        dd($request);
         $info = Pessoa::find($id);
         $info->nome = $request['nome'];
         $info->data_nascimento = $request['data_nascimento'];
@@ -109,6 +111,12 @@ class pessoa_cont extends Controller
         $info->endereco = $request['endereco'];
         $info->complemento = $request['complemento'];
         $info->save();
+
+        #################################### Direito Violado
+
+        $direito = Direito_violado::create($request->all()); 
+        dd($direito);
+
 
         $pessoa = DB::table('pessoa')
                         ->where('id',$id)

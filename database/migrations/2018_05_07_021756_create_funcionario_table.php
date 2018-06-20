@@ -28,9 +28,6 @@ class CreateFuncionarioTable extends Migration
 
             $table->unsignedInteger('area_atuacao_id');
             $table->foreign('area_atuacao_id')->references('id')->on('area_atuacao');
-
-            $table->unsignedInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
             
         });
     }
