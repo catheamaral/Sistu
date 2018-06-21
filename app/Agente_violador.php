@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agente_violador extends Model
 {
-    //protected $table="agente_violador";
+    protected $table="agente_violador";
 
 	protected $fillable = [
 

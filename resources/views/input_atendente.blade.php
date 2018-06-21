@@ -118,20 +118,20 @@ function formatar(mascara, documento){
          <p>
          <p>   
             <div class="w3-col s6">
-              <input class="w3-input" type="text" placeholder="Denunciante" name="denunciante"></p>
+              <input class="w3-input" type="text" placeholder="Denunciante" name="denunciante" required></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-input" name="contato_denunciante" maxlength="11" type="text" placeholder="Contato"></p>
+              <input class="w3-input" name="contato_denunciante" maxlength="11" type="text" required placeholder="Contato"></p>
             </div>
           <p>
 
             <div class="w3-col s2">
-              <input class="w3-input" maxlength="14" type="text" placeholder="RG" name="rg_denunciante"></p>
+              <input class="w3-input" maxlength="14" type="text" placeholder="RG" required name="rg_denunciante"></p>
             </div>
           <p>
             <div class="w3-col s2">
-              <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_denunciante"></p>
+              <input class="w3-input" maxlength="11" type="text" placeholder="CPF" required name="cpf_denunciante"></p>
             </div>
           <p>
           <div class="w3-col s12">

@@ -20,7 +20,17 @@ Route::get('/conselheiro', function () {
 });
 
 Route::get('/novos', function () {
-    return view('novos');
+
+    $user_id = ((Auth::user()->id)- 1);
+
+    $info = DB::table('pessoa')
+            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+            
+            ->select('pessoa.*')
+            ->where('registro_atendimento.funcionario_id', $user_id)
+            ->get();
+
+    return view('novos', ['info' => $info]);
 });
 
 ########################################### INFORMAÇÃO DOS CONSELHEIROS
@@ -81,7 +91,7 @@ Route::get('/third', function () {
 
 
 ######################################################33
-#ROTAS DE ACESSO AS LISTAGEM NO PROCESSO
+#ROTAS DE ACESSO AO PROCESSO
 ###########################################################
 Route::get('np/{data}',  function ($data) {
 
@@ -136,19 +146,26 @@ Route::get('listagem', function () {
 
 Route::get('listagem_atendente', function () {
 
+    
     $info = DB::table('andamento')
-                ->join('status', 'status.id', '=', 'andamento.status_id' )
-                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-                ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
-                ->select('pessoa.*','status.descricao')
-                ->get();
+        ->join('status', 'status.id', '=', 'andamento.status_id' )
+        ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+        ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
+        ->select('pessoa.*','status.*')
+        ->get();
 
     return view('listagem_atendente', ['info' => $info]);
 });
 
 Route::get('meusProcessos', function () {
 
-    $info = DB::table('pessoa')->get();
+    $user_id = ((Auth::user()->id)- 1);
+
+    $info = DB::table('pessoa')
+            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+            ->select('pessoa.*')
+            ->where('registro_atendimento.funcionario_id', $user_id)
+            ->get();
 
     return view('meusProcessos', ['info' => $info]);
 });

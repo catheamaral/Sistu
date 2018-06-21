@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 
 use App\pessoa;
-
 use App\funcionario;
+use App\user;
 
 class pessoa_cont_adm extends Controller
 {
@@ -40,7 +41,32 @@ class pessoa_cont_adm extends Controller
      */
     public function store(Request $request)
     {
+        
         $info = Funcionario::create($request->all());
+        //$usuario = User::create($request->all());
+        $usuario = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'perfil_id' => $request['perfil_id'],
+        ]);
+
+        $ra = DB::table('funcionario')
+            ->select('id')
+            ->latest()
+            ->first();
+        
+        $last = DB::table('users')
+            ->select('id')
+            ->latest()
+            ->first();
+
+        DB::table('verifications')
+                ->insert([
+                    'users_id' => $last->id,
+                    'funcionario_t_id' => $ra->id
+        ]);
+
 
         $conselheiros = DB::table('funcionario')
             ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')

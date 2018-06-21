@@ -149,9 +149,16 @@ class pessoa_cont extends Controller
         ]);
 
 
-        ####################################
-
-
+        #################################### ATUALIZANDO STATUS
+        DB::table('andamento')
+                ->insert([
+                    'descricao' => 'Não Sei oq é',
+                    'data_hora' => date("Y-m-d H:i:s"),
+                    'status_id' => 10,
+                    'registro_atendimento_id' => $lol->id
+        ]);
+        
+        #################################### PASSANDO DADOS PRA VIEW
         $pessoa = DB::table('pessoa')
                         ->where('id',$id)
                         ->get();

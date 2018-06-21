@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <title>Sistema Tutelar</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar w3-cell-middle">
-      <span>Bem Vindo, <strong><?php $nome = Auth::user()->name; echo $nome; ?></strong></span><br>
+      <span>Bem Vindo, <strong><?php $nome = Auth::user()->nome; echo $nome; ?></strong></span><br>
     </div>
   </div>
   <hr>

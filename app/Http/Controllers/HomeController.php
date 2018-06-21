@@ -32,6 +32,7 @@ class HomeController extends Controller
         #####################  IDENTIFICANDO O USER
 
         $user = Auth::user()->perfil_id;
+        $user_id = ((Auth::user()->id)- 1);
         #####################
         
         $conselheiros = DB::table('funcionario')
@@ -41,12 +42,20 @@ class HomeController extends Controller
             ->get();
 
 
-
+        ############################################# DEFININDO ROTAS
         if ($user == 1) {
-            # code...
+
             return view('estatistica_atendente');
+
         }elseif($user == 2){
-            return view('estatistica');
+
+            $info = DB::table('pessoa')
+                ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+                ->select('pessoa.*')
+                ->where('registro_atendimento.funcionario_id', $user_id)
+                ->get();
+
+            return view('estatistica', ['info' => $info]);
         }else{
             return view('conselheiro_adm', ['conselheiros' => $conselheiros]);
         }
