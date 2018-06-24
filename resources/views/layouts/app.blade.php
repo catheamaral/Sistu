@@ -52,6 +52,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <a href="{{url('/estatistica_atendente')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home"></i>&nbsp; Página Inicial</a>
         <a href="{{url('/input_atendente')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i>&nbsp; Cadastro</a>
         <a href="{{url('/listagem_atendente')}}" class="w3-bar-item w3-button w3-padding" ><i class="fa fa-search fa-fw"></i>&nbsp; Busca</a>
+        <a href="{{url('/triagem')}}" class="w3-bar-item w3-button w3-padding" ><i class="fa fa-search fa-fw"></i>&nbsp; Nova Triagem</a>
       <?php } ?>
 
       <?php

@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use App\pessoa;
+use App\Registro_atendimento;
+use Illuminate\Support\Facades\Auth;
 
-use App\Pessoa;
-
-use App\Direito_violado;
-
-use App\Agente_violador;
-
-class pessoa_cont extends Controller
+class triagem_cont extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +19,16 @@ class pessoa_cont extends Controller
     public function index()
     {
 
-        #$pessoa = DB::table('perfil')
 
-        
-        return view("input");
-        
+        $info = DB::table('pessoa')
+            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+            ->select('pessoa.*')
+            ->where([
+                ['registro_atendimento.aceito', '=', 2],
+                ])
+            ->get();
+
+        return view('triagem', ['info' => $info]);
     }
 
     /**
@@ -48,9 +49,7 @@ class pessoa_cont extends Controller
      */
     public function store(Request $request)
     {
-        $pessoa = Pessoa::create($request->all());
-        
-        return view('processos', ['pessoa' => $pessoa, 'cadastrado' => $request['cadastrado']]);
+        //
     }
 
     /**
@@ -61,6 +60,16 @@ class pessoa_cont extends Controller
      */
     public function show($id)
     {
+        $info = DB::table('pessoa')->where('id', $id)->first();
+
+        $conselheiros = DB::table('funcionario')
+            ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
+            ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
+            ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
+            ->where('perfil.id', 2)
+            ->get();
+
+        return view('input_at_edit',['info' => $info, 'conselheiros' => $conselheiros]);
 
     }
 
@@ -72,7 +81,7 @@ class pessoa_cont extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -84,7 +93,6 @@ class pessoa_cont extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($id);
         $info = Pessoa::find($id);
         $info->nome = $request['nome'];
         $info->data_nascimento = $request['data_nascimento'];
@@ -114,69 +122,30 @@ class pessoa_cont extends Controller
         $info->complemento = $request['complemento'];
         $info->save();
 
-        #################################### Direito Violado
-
-        $direito = Direito_violado::create($request->all());
-
-        $last_dv = DB::table('direito_violado')
-                    ->select('id')
-                    ->latest()
-                    ->first();
-        
-        $lol = DB::table('registro_atendimento')->where('pessoa_id', $id)->first();
-
-        DB::table('registroatend_direitoviolado')
-            ->insert([
-            'created_at' => date("Y-m-d H:i:s"),
-            'registro_atendimento_id' => $lol->id,
-            'direito_violado_id' => $last_dv->id
-        ]);
-        
-        #################################### Agente Violador
-
-        $violador = Agente_violador::create($request->all());
-
-        $last_av = DB::table('direito_violado')
-                    ->select('id')
-                    ->latest()
-                    ->first();
-        
-        DB::table('registroatend_agenteviolador')
-            ->insert([
-            'created_at' => date("Y-m-d H:i:s"),
-            'registro_atendimento_id' => $lol->id,
-            'agente_violador_id' => $last_av->id
-        ]);
-
-
-        #################################### ATUALIZANDO STATUS
         $info = Registro_atendimento::find($id);
-        $info->status_id = 10;
+        $info->aceito = 0;
+        $info->status_id = 1;
+        $info->funcionario_id = $request['funcionario_id'];
         $info->save();
 
         DB::table('andamento')
                 ->insert([
+                    'descricao' => 'Sem Providência',
                     'data_hora' => date("Y-m-d H:i:s"),
-                    'status_id' => 10,
-                    'registro_atendimento_id' => $lol->id
+                    'status_id' => 1,
+                    'registro_atendimento_id' => $id
         ]);
-        
-        #################################### PASSANDO DADOS PRA VIEW
-        $pessoa = DB::table('pessoa')
-                        ->where('id',$id)
-                        ->first();
 
         $info = DB::table('andamento')
-            ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-            ->join('status', 'status.id', '=', 'andamento.status_id')
-            ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
-            ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
-            ->select('funcionario.nome','status.status','andamento.*')
-            ->where('andamento.registro_atendimento_id', $id)
-            ->orderby('andamento.data_hora', 'DESC')
-            ->get();
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->select('pessoa.*','status.status')
+                ->groupBy('andamento.registro_atendimento_id', 'pessoa.id')
+                ->orderby('andamento.data_hora', 'DESC')
+                ->get();
 
-        return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
+    return view('listagem_atendente', ['info' => $info]);
 
 
     }
@@ -189,6 +158,6 @@ class pessoa_cont extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

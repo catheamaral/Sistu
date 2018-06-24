@@ -80,11 +80,11 @@ class aceito extends Controller
     {
         $info = Registro_atendimento::find($id);
         $info->aceito = 1;
+        $info->status_id =  2;
         $info->save();
 
         DB::table('andamento')
                 ->insert([
-                    'descricao' => 'Sem Providência',
                     'data_hora' => date("Y-m-d H:i:s"),
                     'status_id' => 2,
                     'registro_atendimento_id' => $id

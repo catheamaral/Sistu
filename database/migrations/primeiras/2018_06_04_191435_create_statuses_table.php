@@ -52,7 +52,7 @@ class CreateStatusesTable extends Migration
         DB::table('status')->insert(
             array(
                 'id' => 6,
-                'status' => 'Recusado pelo conselheiro'
+                'status' => 'Recusado pelo Colegiado'
             )
         );
         DB::table('status')->insert(

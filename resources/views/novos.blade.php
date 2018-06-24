@@ -15,7 +15,7 @@
       @foreach($info as $data)
       <tr>
         <td>{{$data->nome}}</td>
-        <td>{{$data->descricao}}</td>
+        <td>{{$data->status}}</td>
         <td><button onclick="javascript:location='aceito/{{$data->id}}'" class="w3-button" title="Ver Processo" style="width:100%;"><i class="fa fa-eye"></i> Visualizar</button>
       </tr>
       @endforeach

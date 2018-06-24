@@ -109,7 +109,6 @@ Route::get('np/{data}',  function ($data) {
 
     $info = DB::table('pessoa')->where('id', $data)->get();
 
-    #echo $data;
     return view('numerProcesso', ['info' => $info]);
 });
 
@@ -126,11 +125,18 @@ Route::get('np/okay/{data}',  function ($data) {
                 ->orderby('andamento.data_hora', 'DESC')
                 ->get();
 
-    $pessoa = DB::table('pessoa')->where('id', $data)->first();
-    #$dt = strtotime($data->data_nascimento);
+    $pessoa = DB::table('pessoa')
+        ->join('registro_atendimento', 'pessoa.id', 'registro_atendimento.pessoa_id')
+        ->where('registro_atendimento.id', $data)
+        ->first();
 
-    return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
-
+    if (($pessoa->status_id) == 9) {
+        return view('processo_finalizado', ['info' => $info, 'pessoa' => $pessoa]);
+    }elseif(($pessoa->status_id) == 4) {
+        return view('processo_deliberacao', ['pessoa' => $pessoa, 'info' => $info]);
+    }else{
+        return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
+    }
 });
 
 Route::get('np/okay/input_edit/{data}',  function ($data) {
@@ -160,32 +166,40 @@ Route::post('verify_adm', 'pessoa_cont_adm@store');
 ################################################################################################################
 Route::get('listagem', function () {
 
-    $info = DB::table('pessoa')->get();
+    $info = DB::table('registro_atendimento')
+            ->join('pessoa', 'pessoa.id', 'registro_atendimento.pessoa_id')
+            ->join('status', 'status.id', 'registro_atendimento.status_id')
+            ->select('pessoa.*','status.status')
+            ->get();
 
-    return view('listagem', ['info' => $info]);
+    return view('listagem_atendente', ['info' => $info]);
 });
 
 Route::get('listagem_atendente', function () {
 
-    
-    $info = DB::table('andamento')
-                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-                ->join('status', 'status.id', '=', 'andamento.status_id')
-                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
-                ->select('pessoa.*','status.status')
-                ->groupBy('andamento.registro_atendimento_id', 'pessoa.id')
-                ->orderby('andamento.data_hora', 'DESC')
-                ->get();
+    $info = DB::table('registro_atendimento')
+            ->join('pessoa', 'pessoa.id', 'registro_atendimento.pessoa_id')
+            ->join('status', 'status.id', 'registro_atendimento.status_id')
+            ->select('pessoa.*','status.status')
+            ->get();
 
     return view('listagem_atendente', ['info' => $info]);
 });
 
 Route::get('meusProcessos', 'meus_processos_cont@index');
 
+Route::get('triagem', 'triagem_cont@index');
+
+Route::get('nova_triagem/{id}', 'triagem_cont@show');
+
+Route::post('nova_triagem/{id}/triagem_nova', 'triagem_cont@update');
+
 ########################################################################ROTAS DE LOGIN
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+#################################################################################
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -194,3 +208,4 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('np/okay/input_edit/edit/{id}', 'pessoa_cont@update');
 
 ##################################################################################
+Route::post('np/okay/{id}/finalizar', 'finalizar_cont@update');

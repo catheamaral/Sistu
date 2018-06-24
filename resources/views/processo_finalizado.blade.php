@@ -62,7 +62,7 @@ textarea {
             <h2>{{$pessoa->nome}}  - {{$idade}} Anos</h2>
           </div>
           <div class="w3-col s2">
-            <a href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
+            <a disabled href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
           </div>
         </header>
         <ul class="w3-ul">
@@ -96,7 +96,7 @@ textarea {
             <h2 >Histórico</h2>
           </div> 
           <div class="w3-col s2">
-            <button onclick="document.getElementById('id05').style.display='block'" class="w3-button w3-right w3-xlarge w3-fw"> Despacho</button>
+            <button disabled onclick="document.getElementById('id05').style.display='block'" class="w3-button w3-right w3-xlarge w3-fw"> Despacho</button>
           </div>
         </header>
         <div class="w3-container">
@@ -117,11 +117,11 @@ textarea {
         </div><p></p>
       </div>
       <div class="w3-bar w3-down w3-white w3-large" style="z-index:4">
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Deliberação do Colegiado</button>
-        <button  onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Anexar Arquivo</button>
-        <button onclick="document.getElementById('id03').style.display='block'" class="w3-button w3-white w3-large w3-border">Adicionar Providência</button>
-        <button onclick="document.getElementById('id04').style.display='block'" class="w3-button w3-white w3-large w3-border">Gerar Documento</button>
-        <button onclick="javascript:location='{{url('/listagem')}}'" class="w3-button w3-white w3-large w3-border">Nova Pesquisa</button>
+        <button disabled onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Deliberação do Colegiado</button>
+        <button disabled onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Anexar Arquivo</button>
+        <button disabled onclick="document.getElementById('id03').style.display='block'" class="w3-button w3-white w3-large w3-border">Adicionar Providência</button>
+        <button disabled onclick="document.getElementById('id04').style.display='block'" class="w3-button w3-white w3-large w3-border">Gerar Documento</button>
+        <button disabled onclick="javascript:location='{{url('/listagem')}}'" class="w3-button w3-white w3-large w3-border">Nova Pesquisa</button>
       </div>
       </div>
         <p></p>

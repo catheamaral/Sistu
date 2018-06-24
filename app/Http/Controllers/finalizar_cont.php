@@ -9,7 +9,7 @@ use App\pessoa;
 use App\Registro_atendimento;
 use Illuminate\Support\Facades\Auth;
 
-class recusa_cont extends Controller
+class finalizar_cont extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -74,30 +74,34 @@ class recusa_cont extends Controller
     public function update(Request $request, $id)
     {
         $info = Registro_atendimento::find($id);
-        $info->aceito = 2;
-        $info->status_id = 3;
+        $info->aceito = 1;
+        $info->status_id =  9;
         $info->save();
 
         DB::table('andamento')
                 ->insert([
                     'descricao' => $request['pro2'],
                     'data_hora' => date("Y-m-d H:i:s"),
-                    'status_id' => 3,
+                    'status_id' => 9,
                     'registro_atendimento_id' => $id
         ]);
 
-        $user_id = ((Auth::user()->id) - 1);
+        $user = ((Auth::user()->id - 1));
 
-        $info = DB::table('pessoa')
-            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
-            ->select('pessoa.*')
-            ->where([
-                ['registro_atendimento.funcionario_id', '=', $user_id],
-                ['registro_atendimento.aceito', '=', 1],
-                ])
-            ->get();
+        $pessoa = DB::table('pessoa')->where('id', $id)->first();
 
-        return view('meusProcessos', ['info' => $info]);
+        $info = DB::table('andamento')
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
+                ->select('funcionario.nome','status.status','andamento.*')
+                ->where('andamento.registro_atendimento_id', $id)
+                ->orderby('andamento.data_hora', 'DESC')
+                ->get();
+
+        return view('processo_finalizado', ['info' => $info, 'pessoa' => $pessoa]);
+
     }
 
     /**

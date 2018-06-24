@@ -60,6 +60,7 @@ class HomeController extends Controller
                 ['registro_atendimento.funcionario_id' , $user_id],
                 ['registro_atendimento.aceito', 0]
                 ])
+            ->groupBy('andamento.registro_atendimento_id')
             ->get();
 
             return view('estatistica', ['info' => $info]);
