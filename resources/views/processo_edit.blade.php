@@ -102,10 +102,14 @@ textarea {
         <div class="w3-container">
           <ul class="w3-ul">
           @foreach($info as $data)
+          <?php 
+           $datacerta = strtotime($data->data_hora);
+           $date = date("d/m/Y H:i:s", $datacerta);
+          ?>
             <li class="w3-bar">
               <div class="w3-bar-item">
-                <span class="w3-large">{{$data->nome}} - 14/04/2018</span><br>
-                <span>{{$data->status}}</span>
+                <span class="w3-large">{{$data->nome}} - {{$date}}</span><br>
+                <span><strong>{{$data->status}}</strong></span>
               </div>
             </li>
           @endforeach

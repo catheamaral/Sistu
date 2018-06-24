@@ -161,9 +161,19 @@ class pessoa_cont extends Controller
         #################################### PASSANDO DADOS PRA VIEW
         $pessoa = DB::table('pessoa')
                         ->where('id',$id)
-                        ->get();
+                        ->first();
 
-        return view('processo_edit', ['pessoa' => $pessoa]);
+        $info = DB::table('andamento')
+            ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+            ->join('status', 'status.id', '=', 'andamento.status_id')
+            ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+            ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
+            ->select('funcionario.nome','status.status','andamento.*')
+            ->where('andamento.registro_atendimento_id', $id)
+            ->orderby('andamento.data_hora', 'DESC')
+            ->get();
+
+        return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
 
 
     }

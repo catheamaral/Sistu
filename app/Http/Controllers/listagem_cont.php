@@ -49,7 +49,10 @@ class listagem_cont extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $pessoa = DB::table('funcionario')->where('id', $id)->first();
+
+         return view('info',['pessoa' => $pessoa]);
     }
 
     /**

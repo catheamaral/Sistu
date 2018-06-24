@@ -6,26 +6,29 @@
   <p><div class="w3-col s10">
     <input class="w3-input w3-border w3-padding" type="text" placeholder="Procure por nomes.." id="myInput" onkeyup="myFunction()"></p>
   </div>
+  
   <div class="w3-col s12 w3-row-padding">
+  <hr>
     <table class="w3-card-4 w3-table-all w3-margin-top" id="myTable">
       <tr class="w3-green">
         <th style="width:50%;">Nome</th>
         <th style="width:20%;">Area de Atuação</th>
         <th style="width:40%;">Opções</th>
       </tr>
+      @foreach($info as $data)
       <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>2º Conselho</td>
+        <td>{{$data->nome}}</td>
+        <td>{{$data->atuacao}}</td>
         <td>
           <div class="w3-col w3-half" >
             <button class="w3-button" onclick="document.getElementById('id01').style.display='block'" title="Identidade" ><i class="fa fa-info"></i> Identificação</button>
           </div>
           <div class="w3-col w3-half"> 
-              <button class="w3-button" title="Ver Processo em Aberto" onclick="javascript:location='{{url('/third')}}'" ><i class="fa fa-folder-open"></i> Processos</button>
+              <button class="w3-button" title="Ver Processo em Aberto" onclick="javascript:location='/third/{{$data->id}}'" ><i class="fa fa-folder-open"></i> Processos</button>
           </div> 
         </td>
       </tr>
-
+      @endforeach
     </table>
     <hr>
   </div>

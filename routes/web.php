@@ -18,7 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/conselheiro', function () {
-    return view('conselheiro');
+
+    $info = DB::table('funcionario')
+        ->join('area_atuacao','funcionario.area_atuacao_id','area_atuacao.id')
+        ->select('funcionario.*', 'area_atuacao.atuacao')
+        ->where('perfil_id', 2)->get();
+
+    return view('conselheiro', ['info' => $info]);
 });
 
 Route::get('novos/', 'Novos@index' );
@@ -75,9 +81,25 @@ Route::get('/gerarRelatorio', function () {
     return view('gerarRelatorio');
 });
 
-Route::get('/third', function () {
-    return view('third');
+Route::get('/third/{id}', function ($id) {
+
+    $info = DB::table('andamento')
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
+                ->select('status.status', 'pessoa.*')
+                ->where('registro_atendimento.funcionario_id', $id)
+                ->orderby('andamento.data_hora', 'DESC')
+                ->groupBy('andamento.registro_atendimento_id')
+                ->get();
+    
+    $pessoa = DB::table('funcionario')->where('id', $id)->first();
+
+    return view('third', ['info' => $info, 'pessoa' => $pessoa]);
 });
+
+Route::get('/third/{data}/detalhes/{{id}}', 'listagem_cont@show');
 
 
 ######################################################33
