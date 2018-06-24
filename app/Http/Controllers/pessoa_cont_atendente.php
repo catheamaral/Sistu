@@ -28,6 +28,7 @@ class pessoa_cont_atendente extends Controller
             ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
             ->where('perfil.id', 2)
             ->get();
+        
 
         $linhas = count($conselheiros);
 
@@ -64,6 +65,8 @@ class pessoa_cont_atendente extends Controller
         DB::table('registro_atendimento')
                     ->insert([
                         'created_at' => date("Y-m-d H:i:s"),
+                        'aceito' => 0,
+                        'status_id' => 1,
                         'funcionario_id' => $request['funcionario_id'],
                         'pessoa_id' => $info->id
                     ]);
@@ -75,17 +78,19 @@ class pessoa_cont_atendente extends Controller
                     
         DB::table('andamento')
                 ->insert([
-                    'descricao' => 'Não Sei oq é',
+                    'descricao' => 'Sem Providência',
                     'data_hora' => date("Y-m-d H:i:s"),
                     'status_id' => 1,
                     'registro_atendimento_id' => $last->id
         ]);
         
         $info = DB::table('andamento')
-                ->join('status', 'status.id', '=', 'andamento.status_id' )
                 ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-                ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
-                ->select('pessoa.*','status.*')
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->select('pessoa.*','status.status')
+                ->groupBy('andamento.registro_atendimento_id', 'pessoa.id')
+                ->orderby('andamento.data_hora', 'DESC')
                 ->get();
         
         

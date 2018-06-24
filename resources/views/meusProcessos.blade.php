@@ -14,7 +14,7 @@
       @foreach ($info as $data)
       <tr>
         <td>{{$data->nome}}</td>
-        <td>Providência </td>
+        <td>{{$data->status}} </td>
         <td><a href="np/{{$data->id}}"x class="w3-button" title="Atualizar Status Processo" style="width:40%;"><i class="fa fa-check-square-o" ></i> Editar</a></td>
       </tr>
       @endforeach

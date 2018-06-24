@@ -16,67 +16,67 @@ class CreateStatusesTable extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->string('descricao');
+            $table->string('status');
         });
 
         DB::table('status')->insert(
             array(
                 'id' => 1,
-                'descricao' => 'Enviado para conselheiro'
+                'status' => 'Enviado para conselheiro'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 2,
-                'descricao' => 'Aceito pelo conselheiro'
+                'status' => 'Aceito pelo conselheiro'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 3,
-                'descricao' => 'Recusado pelo conselheiro'
+                'status' => 'Recusado pelo conselheiro'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 4,
-                'descricao' => 'Enviado para o colegiado'
+                'status' => 'Enviado para o colegiado'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 5,
-                'descricao' => 'Aceito pelo Colegiado'
+                'status' => 'Aceito pelo Colegiado'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 6,
-                'descricao' => 'Recusado pelo conselheiro'
+                'status' => 'Recusado pelo conselheiro'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 7,
-                'descricao' => 'Documento Gerado'
+                'status' => 'Documento Gerado'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 8,
-                'descricao' => 'Documento Anexado'
+                'status' => 'Documento Anexado'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 9,
-                'descricao' => 'Processo finalizado'
+                'status' => 'Processo Finalizado'
             )
         );
         DB::table('status')->insert(
             array(
                 'id' => 10,
-                'descricao' => 'Processo Editado'
+                'status' => 'Processo Editado'
             )
         );
     }

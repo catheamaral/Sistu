@@ -95,24 +95,14 @@ textarea {
         </header>
         <div class="w3-container">
           <ul class="w3-ul">
+
             <li class="w3-bar">
               <div class="w3-bar-item">
                 <span class="w3-large">Nome do Conselheiro - 16/04/2018</span><br>
                 <span>Aprovado por Unamididade pelos Conselheiros: Conselheiro1, Conselheiro2, Conselheiro3 </span>
               </div>
             </li>
-            <li class="w3-bar">
-              <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 16/04/2018</span><br>
-                <span>Enviado para Deliberação do Colegiado</span>
-              </div>
-            </li>
-            <li class="w3-bar">
-              <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Providencio que a criança seja afastada da Presença do Pai.</span>
-              </div>
-            </li>
+
           </ul><p></p>
         </div><p></p>
       </div>

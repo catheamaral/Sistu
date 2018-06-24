@@ -32,7 +32,9 @@ class HomeController extends Controller
         #####################  IDENTIFICANDO O USER
 
         $user = Auth::user()->perfil_id;
-        $user_id = ((Auth::user()->id)- 1);
+        
+        $user_id = ((Auth::user()->id) -1);
+        
         #####################
         
         $conselheiros = DB::table('funcionario')
@@ -50,10 +52,15 @@ class HomeController extends Controller
         }elseif($user == 2){
 
             $info = DB::table('pessoa')
-                ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
-                ->select('pessoa.*')
-                ->where('registro_atendimento.funcionario_id', $user_id)
-                ->get();
+            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+            ->join('andamento','andamento.registro_atendimento_id','registro_atendimento.id')
+            ->join('status', 'status.id', 'andamento.status_id')
+            ->select('pessoa.*', 'status.status')
+            ->where([
+                ['registro_atendimento.funcionario_id' , $user_id],
+                ['registro_atendimento.aceito', 0]
+                ])
+            ->get();
 
             return view('estatistica', ['info' => $info]);
         }else{

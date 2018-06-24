@@ -35,9 +35,8 @@ textarea {
 
 <body>
   <div class="w3-container w3-white w3-animate-top">
-    @foreach($pessoa as $data)
     <?php 
-      $dt = strtotime($data->data_nascimento);
+      $dt = strtotime($pessoa->data_nascimento);
       
       $date = date("d/m/Y", $dt);
       list($dia, $mes, $ano) = explode('/', $date);
@@ -53,17 +52,17 @@ textarea {
     <div class="w3-container">
       <div class="w3-card-4 ">
           <div class="w3-container w3-summer-sky">
-            <h2>Processo Número - {{$data->id}} </h2>
+            <h2>Processo Número - {{$pessoa->id}} </h2>
           </div><p>
       </div>
       <p></p>
       <div class="w3-card-4 ">
         <header class="w3-container w3-summer-sky">
           <div class="w3-col s10">
-            <h2>{{$data->nome}}  - {{$idade}} Anos</h2>
+            <h2>{{$pessoa->nome}}  - {{$idade}} Anos</h2>
           </div>
           <div class="w3-col s2">
-            <a href="input_edit/{{$data->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
+            <a href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
           </div>
         </header>
         <ul class="w3-ul">
@@ -74,18 +73,18 @@ textarea {
               </label><p></p>
             <div class="w3-col s12">
               <label >Nome da Mãe: 
-                <li class="w3-hover-white"> {{$data->genitora}} </li>
+                <li class="w3-hover-white"> {{$pessoa->genitora}} </li>
               </label><p></p>
             </div>
             </div>
             <div class="w3-col s8">
               <label >Responsável: 
-                <li class="w3-hover-white">{{$data->responsavel}} </li>
+                <li class="w3-hover-white">{{$pessoa->responsavel}} </li>
               </label><p></p>
             </div>
             <div class="w3-col s4">
               <label> Documento:
-                <li class="w3-hover">{{$data->cpf_responsavel}}</li>
+                <li class="w3-hover">{{$pessoa->cpf_responsavel}}</li>
               </label><p></p>
             </div>
           </div> 
@@ -102,12 +101,14 @@ textarea {
         </header>
         <div class="w3-container">
           <ul class="w3-ul">
+          @foreach($info as $data)
             <li class="w3-bar">
               <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Aceitou o Processo</span>
+                <span class="w3-large">{{$data->nome}} - 14/04/2018</span><br>
+                <span>{{$data->status}}</span>
               </div>
             </li>
+          @endforeach
           </ul><p></p>
         </div><p></p>
       </div>
@@ -207,7 +208,7 @@ textarea {
             </div>
           </div>
         </div>
-    @endforeach
+
     </div>
   </body>
   @endsection

@@ -1,5 +1,7 @@
+
 <?php
 
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,19 +21,13 @@ Route::get('/conselheiro', function () {
     return view('conselheiro');
 });
 
-Route::get('/novos', function () {
+Route::get('novos/', 'Novos@index' );
 
-    $user_id = ((Auth::user()->id)- 1);
+Route::get('/aceito/{id}', 'aceito@index' );
 
-    $info = DB::table('pessoa')
-            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
-            
-            ->select('pessoa.*')
-            ->where('registro_atendimento.funcionario_id', $user_id)
-            ->get();
+Route::get('/aceito/{id}/wright', 'aceito@update' );
 
-    return view('novos', ['info' => $info]);
-});
+Route::post('/aceito/{id}/recusa', 'recusa_cont@update' );
 
 ########################################### INFORMAÇÃO DOS CONSELHEIROS
 Route::get('/info_conselheiro/{id}', function ($id) {
@@ -48,9 +44,7 @@ Route::get('/info_conselheiro/{id}', function ($id) {
 ###########################################
 
 ###########################################33 HOME CONSELHEIRO
-Route::get('/estatistica', function () {
-    return view('estatistica');
-});
+Route::get('/estatistica', 'HomeController@index');
 ################################################################ HOME ATENDENTE
 Route::get('/estatistica_atendente', function () {
     return view('estatistica_atendente');
@@ -85,10 +79,6 @@ Route::get('/third', function () {
     return view('third');
 });
 
-Route::get('/third', function () {
-    return view('third');
-});
-
 
 ######################################################33
 #ROTAS DE ACESSO AO PROCESSO
@@ -104,11 +94,20 @@ Route::get('np/{data}',  function ($data) {
 
 Route::get('np/okay/{data}',  function ($data) {
 
-    $pessoa = DB::table('pessoa')->where('id', $data)->get();
+    $info = DB::table('andamento')
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
+                ->select('funcionario.nome','status.status','andamento.*')
+                ->where('andamento.registro_atendimento_id', $data)
+                ->orderby('andamento.data_hora', 'DESC')
+                ->get();
 
+    $pessoa = DB::table('pessoa')->where('id', $data)->first();
     #$dt = strtotime($data->data_nascimento);
 
-    return view('processo_edit', ['pessoa' => $pessoa]);
+    return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
 
 });
 
@@ -148,33 +147,24 @@ Route::get('listagem_atendente', function () {
 
     
     $info = DB::table('andamento')
-        ->join('status', 'status.id', '=', 'andamento.status_id' )
-        ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-        ->join('pessoa', 'pessoa.id', '=', 'registro_atendimento.pessoa_id')
-        ->select('pessoa.*','status.*')
-        ->get();
+                ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+                ->join('status', 'status.id', '=', 'andamento.status_id')
+                ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+                ->select('pessoa.*','status.status')
+                ->groupBy('andamento.registro_atendimento_id', 'pessoa.id')
+                ->orderby('andamento.data_hora', 'DESC')
+                ->get();
 
     return view('listagem_atendente', ['info' => $info]);
 });
 
-Route::get('meusProcessos', function () {
-
-    $user_id = ((Auth::user()->id)- 1);
-
-    $info = DB::table('pessoa')
-            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
-            ->select('pessoa.*')
-            ->where('registro_atendimento.funcionario_id', $user_id)
-            ->get();
-
-    return view('meusProcessos', ['info' => $info]);
-});
-
+Route::get('meusProcessos', 'meus_processos_cont@index');
 
 ########################################################################ROTAS DE LOGIN
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 ##################################################################################

@@ -40,7 +40,7 @@
         <td>{{$data->nome}}</td>
         <td>{{$data->cpf_responsavel}}</td>
         <td>{{$data->rg_responsavel}}</td>
-        <td>{{$data->descricao}}</td>
+        <td>{{$data->status}}</td>
       </tr>
       @endforeach
     </table>

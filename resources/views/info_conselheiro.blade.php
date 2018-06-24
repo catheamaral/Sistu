@@ -55,4 +55,6 @@
         <button onclick="javascript:location='/conselheiros'" type="button" class="w3-button w3-red w3-right">X</button>
     </div>
 </div>
+<hr>
+</div>
 @endsection
