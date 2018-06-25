@@ -24,6 +24,17 @@ textarea {
 
 </style>
 <script>
+
+function validate(cpf){
+  document.getElementById('cpf_responsavel').onsubmit = function (event){
+  var mensagem = 'CPF Inválido'
+  if ( CPF.validate(document.getElementById('cpf-validacao').value) === true ) {
+    mensagem = 'CPF Válido'
+  }
+  document.getElementById('resultado-validacao').innerHTML = mensagem
+};
+}
+
 function formatar(mascara, documento){
   var i = documento.value.length;
   var saida = mascara.substring(0,1);
@@ -81,7 +92,7 @@ function formatar(mascara, documento){
           </div>
          <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_genitor" ></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_genitor"  ></p>
           </div>
         <p>
           <div class="w3-col s6">
@@ -113,7 +124,7 @@ function formatar(mascara, documento){
           </div>
         <p>
           <div class="w3-col s2">
-            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_responsavel" ></p>
+            <input class="w3-input" maxlength="11" type="text" placeholder="CPF" name="cpf_responsavel" onkeypress="validate(this)" id="cpf_responsavel"></p>
           </div>
          <p>
          <p>   

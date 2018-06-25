@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use App\pessoa;
 
@@ -54,6 +55,11 @@ class pessoa_cont_atendente extends Controller
     public function store(Request $request)
     {
 
+        $validator = Validator::make(
+            ['cpf_responsavel' => $request->cpf_responsavel],
+            ['cpf_responsavel' => 'bail|required|cpf']
+        );
+        
         $id = Auth::user()->id;
         $pessoa = Pessoa::create($request->all());
         $info = DB::table('pessoa')

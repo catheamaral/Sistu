@@ -59,23 +59,8 @@ function formatar(mascara, documento){
       </form>
     </div>
     <hr>
-    <p><input onclick="document.getElementById('id10').style.display='block'" class="w3-button w3-light-grey" type="submit" value="Gerar Relatório" ></p>
+    <p><input onclick="javascript:location='{{url('/documento')}}'" class="w3-button w3-light-grey" type="submit" value="Gerar Relatório" ></p>
     <hr>
-  </div>
-
-  <div id="id10" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:1000px; max-height:1000px">
-      <div class="w3-container">
-        <h3>Relatório</h3><p></p>
-        <div class="w3-col s12">
-          
-        </div>
-      </div>
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button type="button" class="w3-button w3-green">Imprimir</button>
-        <button onclick="document.getElementById('id10').style.display='none'" type="button" class="w3-button w3-red w3-right">X</button>
-      </div>
-    </div><br>
   </div>
 </div>
 @endsection

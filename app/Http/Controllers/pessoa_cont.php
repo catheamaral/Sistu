@@ -13,6 +13,8 @@ use App\Direito_violado;
 
 use App\Agente_violador;
 
+use App\Registro_atendimento;
+
 class pessoa_cont extends Controller
 {
     /**

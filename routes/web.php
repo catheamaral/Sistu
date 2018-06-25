@@ -101,7 +101,7 @@ Route::get('/third/{id}', function ($id) {
 
 Route::get('/third/{data}/detalhes/{{id}}', 'listagem_cont@show');
 
-
+Route::get('documento', 'relatorio_cont@index' );
 ######################################################33
 #ROTAS DE ACESSO AO PROCESSO
 ###########################################################
@@ -149,6 +149,8 @@ Route::get('np/okay/input_edit/{data}',  function ($data) {
 
 });
 
+Route::get('doc1');
+
 ################################################################ INPUT CONSELHEIRO
 Route::get('input/', 'pessoa_cont@index' );
 ################################################################ INPUT ATENDENTE
@@ -192,9 +194,16 @@ Route::get('triagem', 'triagem_cont@index');
 
 Route::get('nova_triagem/{id}', 'triagem_cont@show');
 
+########################################################################## BOTÕES DE PROCESSO
+
 Route::post('nova_triagem/{id}/triagem_nova', 'triagem_cont@update');
 
+Route::post('np/okay/{id}/providencia', 'providencia_cont@update');
+
+Route::post('np/okay/{id}/finalizar', 'finalizar_cont@update');
+
 ########################################################################ROTAS DE LOGIN
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -202,10 +211,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 #################################################################################
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('nova_triagem/{id?}/logout', '\App\Http\Controllers\Auth\LoginController@logout_log');
 
 ##################################################################################
 
 Route::post('np/okay/input_edit/edit/{id}', 'pessoa_cont@update');
 
 ##################################################################################
-Route::post('np/okay/{id}/finalizar', 'finalizar_cont@update');

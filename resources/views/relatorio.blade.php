@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -24,53 +23,27 @@ textarea {
 
 </style>
 <script>
-function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-  
-  if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
-  
-}
-</script>
 
-  <div class="w3-container w3-white w3-animate-top">
-    <h2>Relatórios</h2>
-    <hr>
-    <div class="w3-card-4">
-          <header class="w3-container w3-bar w3-light-grey">
-            <div class="w3-col s12">
-              <h2 >Histórico</h2>
-            </div> 
-          </header>
-          <div class="w3-container">
-            <ul class="w3-ul">
-              <li class="w3-bar">
-                <div class="w3-bar-item">
-                  <span class="w3-large">Relatório Gerado - 16/04/2018</span><br>
-                  <span>por NomeDeQuemGerou</span><br>
-                </div>
-              </li>
-              <li class="w3-bar">
-                <div class="w3-bar-item">
-                  <span class="w3-large">Relatório Gerado - 10/03/2018</span><br>
-                  <span>por NomeDeQuemGerou</span><br>
-                </div>
-              </li>
-              <li class="w3-bar">
-                <div class="w3-bar-item">
-                  <span class="w3-large">Relatório Gerado - 08/01/2018</span><br>
-                  <span>por NomeDeQuemGerou</span><br>
-                </div>
-              </li>
-            </ul><p>
-          </div><p></p>
-        </div></p>
-      </div>
-      <hr>
-      <p><button onclick="javascript:location='{{url('/gerarRelatorio')}}'" class="w3-button w3-green w3-large w3-border">Gerar Novo Relatório</button></p><br><hr>
-    </div>
-</div>
-@endsection
+</script>
+<body>
+  <center><h1>Relatório Semestral</h1></center>
+  <center><h4>Relatório Gerencia do Conselho Tutelar de Rio Branco</h4></center>
+  <BR>
+  <hr>
+  <br>
+  <p><h3>Total de Registro de Atendimento : {{$index}} <h3></p>
+  <p><h3>Casos de Violação a Saúde : {{$saude}} <h3></p>
+  <p><h3>Casos de Violação a Vida : {{$vida}} <h3></p>
+  <p><h3>Casos de Violação a Liberdade : {{$freedom}} <h3></p>
+  <p><h3>Casos de Violação a Educação : {{$educacao}} <h3></p>
+  <p><h3>Casos de Violação a Respeito : {{$respect}} <h3></p>
+  <p><h3>Casos de Violação a Dignidade : {{$dig}} <h3></p>
+  <p><h3>Casos de Violação a Familia: {{$ConvF}} <h3></p>
+  <p><h3>Casos de Violação a Comunidade : {{$ConvComunitaria}} <h3></p>
+  <p><h3>Casos de Violação a Cultura : {{$cultura}} <h3></p>
+  <p><h3>Casos de Violação a Esporte : {{$esporte}} <h3></p>
+  <p><h3>Casos de Violação a Lazer : {{$lazer}} <h3></p>
+  <p><h3>Casos de Violação a Profissão : {{$profissa}} <h3></p>
+
+
+</body>

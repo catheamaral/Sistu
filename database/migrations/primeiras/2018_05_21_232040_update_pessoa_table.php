@@ -36,7 +36,7 @@ class UpdatePessoaTable extends Migration
             $table->string('complemento', 45)->nullable();
             $table->string('estado', 10);
             $table->string('cidade', 10);
-            $table->string('LocalOcorrencia', 60);
+            $table->string('LocalOcorrencia', 60)->nullable();
 
             $table->enum('oriDenuncia',['local','tel','mp','je'])->default('local');
 

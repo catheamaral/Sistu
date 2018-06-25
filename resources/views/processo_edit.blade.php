@@ -144,9 +144,12 @@ textarea {
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container">
               <h3>Adicionar Providência</h3><p></p>
-              <div class="w3-col s12">
-                <textarea placeholder="Quais..." name="pro2"></textarea></p>
-              </div> 
+              <form id="form_finalizar" action="{{$pessoa->id}}/providencia" method="POST">
+                @csrf
+                <div class="w3-col s12">
+                  <textarea placeholder="Quais..." name="pro2"></textarea></p>
+                </div>
+              </form>
             </div>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
               <button onclick="javascript:location='{{url('/processo_deliberacao')}}'" type="button" class="w3-button w3-green">Adicionar</button>

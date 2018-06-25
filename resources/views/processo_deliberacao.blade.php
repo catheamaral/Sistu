@@ -30,6 +30,16 @@ textarea {
     var al = document.getElementById('id05').style.display='block';
   }
 </script>
+<?php 
+$dt = strtotime($pessoa->data_nascimento);
+      
+$date = date("d/m/Y", $dt);
+list($dia, $mes, $ano) = explode('/', $date);
+
+$hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+$nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+$idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+?>
 
 
 <body>
@@ -40,14 +50,14 @@ textarea {
     <div class="w3-container">
       <div class="w3-card-4 ">
           <div class="w3-container w3-summer-sky">
-            <h2>Processo Número - x</h2>
+            <h2>Processo Número - {{$pessoa->id}}</h2>
           </div><p>
       </div>
       <p></p>
       <div class="w3-card-4 ">
         <header class="w3-container w3-summer-sky">
           <div class="w3-col s10">
-            <h2>NOME DA VÍTIMA  - XX ANOS</h2>
+            <h2>{{$pessoa->nome}}  - {{$idade}} ANOS</h2>
           </div>
           <div class="w3-col s2">
             <button disabled="" onclick="javascript:location='home.php?pg=input'" class="w3-button w3-right w3-xlarge w3-fw"> Editar</button>
@@ -57,22 +67,22 @@ textarea {
           <div class="w3-container"><p></p>
             <div class="w3-col s12">
               <label >Data de Nascimento: 
-                <li class="w3-hover-white"> DATA </li>
+                <li class="w3-hover-white"> {{$data}} </li>
               </label><p></p>
             <div class="w3-col s12">
               <label >Nome da Mãe: 
-                <li class="w3-hover-white">NOME DA MÃE </li>
+                <li class="w3-hover-white">{{$processo->genitora}} </li>
               </label><p></p>
             </div>
             </div>
             <div class="w3-col s8">
               <label >Responsável: 
-                <li class="w3-hover-white">NOME DO RESPONSÁVEL </li>
+                <li class="w3-hover-white">{{$processo->responsavel}} </li>
               </label><p></p>
             </div>
             <div class="w3-col s4">
               <label> Documento:
-                <li class="w3-hover">CPF RESPONSAVEL</li>
+                <li class="w3-hover">{{$processo->cpf_responsavel}}</li>
               </label><p></p>
             </div>
           </div> 
@@ -89,30 +99,18 @@ textarea {
         </header>
         <div class="w3-container">
           <ul class="w3-ul">
+          @foreach($info as $data)
+          <?php 
+          $datacerta = strtotime($data->data_hora);
+          $date = date("d/m/Y H:i:s", $datacerta);
+          ?>
             <li class="w3-bar">
               <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Enviado para Deliberação </span>
+                <span class="w3-large">{{$data->nome}} - {{$date}}</span><br>
+                <span>{{$data->status}} - {{$data->descricao}} </span>
               </div>
             </li>
-            <li class="w3-bar">
-              <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Adicionou Providencia: <'providencia'> </span>
-              </div>
-            </li>
-            <li class="w3-bar">
-              <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Atualizou as Informações: <'todas as informações alteradas'></span>
-              </div>
-            </li>
-            <li class="w3-bar">
-              <div class="w3-bar-item">
-                <span class="w3-large">Nome do Conselheiro - 14/04/2018</span><br>
-                <span>Aceitou o Processo</span>
-              </div>
-            </li>
+          @endforeach
           </ul><p></p>
         </div><p></p>
       </div>
