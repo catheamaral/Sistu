@@ -43,11 +43,32 @@ class HomeController extends Controller
             ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
             ->get();
 
+        $index = DB::table('registro_atendimento')
+            ->count('id');
+
+        $proc = DB::table('registro_atendimento')
+            ->where('status_id','<>',9)
+            ->count('id');
+
+        $vida = DB::table('registroatend_direitoviolado')
+            ->join('direito_violado', 'direito_violado.id', 'registroatend_direitoviolado.direito_violado_id')
+            ->select('direito_violado.*')
+            ->where('direito_violado.vida', 1)
+            ->count('direito_violado.vida');
+
+        $saude = DB::table('registroatend_direitoviolado')
+            ->join('direito_violado', 'direito_violado.id', 'registroatend_direitoviolado.direito_violado_id')
+            ->select('direito_violado.*')
+            ->where('direito_violado.saude', 1)
+            ->count('direito_violado.saude');
 
         ############################################# DEFININDO ROTAS
         if ($user == 1) {
 
-            return view('estatistica_atendente');
+            return view('estatistica_atendente',['index' => $index, 
+                                                'proc' => $proc,
+                                                'vida' => $vida,
+                                                'saude' => $saude,]);
 
         }elseif($user == 2){
 
@@ -63,7 +84,12 @@ class HomeController extends Controller
             ->groupBy('andamento.registro_atendimento_id')
             ->get();
 
-            return view('estatistica', ['info' => $info]);
+            return view('estatistica', ['info' => $info, 
+                                        'index' => $index, 
+                                        'proc' => $proc,
+                                        'vida' => $vida,
+                                        'saude' => $saude,
+                                        ]);
         }else{
             return view('conselheiro_adm', ['conselheiros' => $conselheiros]);
         }

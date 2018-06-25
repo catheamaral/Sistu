@@ -18,7 +18,7 @@ class deliberar_cont extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -37,9 +37,11 @@ class deliberar_cont extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $route = route('deliberar', ['id' => $id ]);
+        
+        return redirect()->route('deliberar');
     }
 
     /**
@@ -72,8 +74,49 @@ class deliberar_cont extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        
+    {   
+        if(($request['resultado']) == 5){
+            $info = Registro_atendimento::find($id);
+            $info->status_id =  5;
+            $info->save();
+
+            DB::table('andamento')
+                ->insert([
+                    'descricao' => $request['pro2'],
+                    'data_hora' => date("Y-m-d H:i:s"),
+                    'status_id' => 5,
+                    'registro_atendimento_id' => $id
+        ]);
+
+        }elseif(($request['resultado']) == 6){
+            $info = Registro_atendimento::find($id);
+            $info->status_id =  6;
+            $info->save();
+
+            DB::table('andamento')
+                ->insert([
+                    'descricao' => $request['pro2'],
+                    'data_hora' => date("Y-m-d H:i:s"),
+                    'status_id' => 6,
+                    'registro_atendimento_id' => $id
+        ]);
+        }
+
+        $pessoa = DB::table('pessoa')
+                        ->where('id',$id)
+                        ->first();
+
+        $info = DB::table('andamento')
+            ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
+            ->join('status', 'status.id', '=', 'andamento.status_id')
+            ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
+            ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
+            ->select('funcionario.nome','status.status','andamento.*')
+            ->where('andamento.registro_atendimento_id', $id)
+            ->orderby('andamento.data_hora', 'DESC')
+            ->get();
+
+        return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
     }
 
     /**

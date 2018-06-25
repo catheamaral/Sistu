@@ -21,7 +21,7 @@
         <td>{{$data->atuacao}}</td>
         <td>
           <div class="w3-col w3-half" >
-            <button class="w3-button" onclick="document.getElementById('id01').style.display='block'" title="Identidade" ><i class="fa fa-info"></i> Identificação</button>
+            <a class="w3-button" href="{{route('info', ['{id}'=>$data->id])}}" title="Identidade" ><i class="fa fa-info"></i> Identificação</a>
           </div>
           <div class="w3-col w3-half"> 
               <button class="w3-button" title="Ver Processo em Aberto" onclick="javascript:location='/third/{{$data->id}}'" ><i class="fa fa-folder-open"></i> Processos</button>

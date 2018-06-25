@@ -9,7 +9,7 @@
         <ul class="w3-ul">
         @foreach($conselheiros as $data)
                 <?php
-                    //dd($conselheiros);
+                    dd($data);
                     $dt = strtotime($data->data_nascimento);
                     
                     $date = date("d/m/Y", $dt);

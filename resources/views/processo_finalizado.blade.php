@@ -62,7 +62,7 @@ textarea {
             <h2>{{$pessoa->nome}}  - {{$idade}} Anos</h2>
           </div>
           <div class="w3-col s2">
-            <a disabled href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
+            <a disabled= href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
           </div>
         </header>
         <ul class="w3-ul">
@@ -109,7 +109,7 @@ textarea {
             <li class="w3-bar">
               <div class="w3-bar-item">
                 <span class="w3-large">{{$data->nome}} - {{$date}}</span><br>
-                <span><strong>{{$data->status}}</strong></span>
+                <span><strong>{{$data->status}} - {{$data->descricao}}</strong></span>
               </div>
             </li>
           @endforeach

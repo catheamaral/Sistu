@@ -86,7 +86,6 @@ class pessoa_cont extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($id);
         $info = Pessoa::find($id);
         $info->nome = $request['nome'];
         $info->data_nascimento = $request['data_nascimento'];
@@ -158,6 +157,7 @@ class pessoa_cont extends Controller
 
         DB::table('andamento')
                 ->insert([
+                    'descricao' => $request['pro4'],
                     'data_hora' => date("Y-m-d H:i:s"),
                     'status_id' => 10,
                     'registro_atendimento_id' => $lol->id

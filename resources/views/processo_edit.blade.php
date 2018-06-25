@@ -62,7 +62,7 @@ textarea {
             <h2>{{$pessoa->nome}}  - {{$idade}} Anos</h2>
           </div>
           <div class="w3-col s2">
-            <a href="input_edit/{{$pessoa->id}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
+            <a href="{{route('edit', ['{id}'=>$pessoa->id])}}" class="w3-button w3-right w3-xlarge w3-fw"> Editar</a>
           </div>
         </header>
         <ul class="w3-ul">
@@ -109,7 +109,7 @@ textarea {
             <li class="w3-bar">
               <div class="w3-bar-item">
                 <span class="w3-large">{{$data->nome}} - {{$date}}</span><br>
-                <span><strong>{{$data->status}}</strong></span>
+                <span><strong>{{$data->status}} - {{$data->descricao}}</strong></span>
               </div>
             </li>
           @endforeach
@@ -117,7 +117,7 @@ textarea {
         </div><p></p>
       </div>
       <div class="w3-bar w3-down w3-white w3-large" style="z-index:4">
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Deliberação do Colegiado</button>
+        <button disabled onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Deliberação do Colegiado</button>
         <button  onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white w3-large w3-border">Anexar Arquivo</button>
         <button onclick="document.getElementById('id03').style.display='block'" class="w3-button w3-white w3-large w3-border">Adicionar Providência</button>
         <button onclick="document.getElementById('id04').style.display='block'" class="w3-button w3-white w3-large w3-border">Gerar Documento</button>
@@ -144,7 +144,7 @@ textarea {
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container">
               <h3>Adicionar Providência</h3><p></p>
-              <form id="form_finalizar" action="{{$pessoa->id}}/providencia" method="POST">
+              <form id="form_providencia" action="{{route('providencia', ['{id}'=>$pessoa->id])}}" method="POST">
                 @csrf
                 <div class="w3-col s12">
                   <textarea placeholder="Quais..." name="pro2"></textarea></p>
@@ -152,7 +152,7 @@ textarea {
               </form>
             </div>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-              <button onclick="javascript:location='{{url('/processo_deliberacao')}}'" type="button" class="w3-button w3-green">Adicionar</button>
+              <button onclick="document.getElementById('form_providencia').submit()" type="button" class="w3-button w3-green">Adicionar</button>
               <button onclick="document.getElementById('id03').style.display='none'" type="button" class="w3-button w3-red w3-right">Cancelar</button>
             </div>
           </div>
@@ -205,7 +205,7 @@ textarea {
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container">
               <h3>Finalizar Processo</h3><p></p>
-              <form id="form_finalizar" action="{{$pessoa->id}}/finalizar" method="POST">
+              <form id="form_finalizar" action="{{route('finalizar', ['{id}'=>$pessoa->id])}}" method="POST">
                 @csrf
                 <div class="w3-col s12">
                   <textarea placeholder="Estou Finalizando o processo...." name="pro2"></textarea></p>

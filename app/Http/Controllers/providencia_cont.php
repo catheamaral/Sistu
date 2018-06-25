@@ -101,7 +101,7 @@ class providencia_cont extends Controller
             ->orderby('andamento.data_hora', 'DESC')
             ->get();
 
-        return view('processo_deliberado', ['pessoa' => $pessoa, 'info' => $info]);
+        return view('processo_deliberacao', ['pessoa' => $pessoa, 'info' => $info]);
 
     }
 

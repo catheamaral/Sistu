@@ -15,7 +15,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-blue w3-large" style="z-index:4">
-  <a class="w3-bar-item w3-button w3-right w3-hover-none w3-hover-text-light-grey" href="logout"><i class="fa fa-times"></i>&nbsp; Sair</a>
+  <a class="w3-bar-item w3-button w3-right w3-hover-none w3-hover-text-light-grey" href="{{url('/logout')}}"><i class="fa fa-times"></i>&nbsp; Sair</a>
   <span class="w3-bar-item w3-left">SISTU</span>
 </div>
 
@@ -23,7 +23,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white " style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row w3-cell">
     <div class="w3-col s4">
-      <img src="avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="{!! asset('img/avatar2.png') !!}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar w3-cell-middle">
       <span>Bem Vindo, <strong><?php $nome = Auth::user()->nome; echo $nome; ?></strong></span><br>

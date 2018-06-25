@@ -23,7 +23,7 @@ textarea {
     resize: none;
 }
 
-
+.w3-summer-sky,.w3-summer-sky-hover:hover{color:#000!important;background-color:#38B0DE!important}
 </style>
 <script type="text/javascript">
   function  id(){
@@ -67,22 +67,22 @@ $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
           <div class="w3-container"><p></p>
             <div class="w3-col s12">
               <label >Data de Nascimento: 
-                <li class="w3-hover-white"> {{$data}} </li>
+                <li class="w3-hover-white"> {{$date}} </li>
               </label><p></p>
             <div class="w3-col s12">
               <label >Nome da Mãe: 
-                <li class="w3-hover-white">{{$processo->genitora}} </li>
+                <li class="w3-hover-white">{{$pessoa->genitora}} </li>
               </label><p></p>
             </div>
             </div>
             <div class="w3-col s8">
               <label >Responsável: 
-                <li class="w3-hover-white">{{$processo->responsavel}} </li>
+                <li class="w3-hover-white">{{$pessoa->responsavel}} </li>
               </label><p></p>
             </div>
             <div class="w3-col s4">
               <label> Documento:
-                <li class="w3-hover">{{$processo->cpf_responsavel}}</li>
+                <li class="w3-hover">{{$pessoa->cpf_responsavel}}</li>
               </label><p></p>
             </div>
           </div> 
@@ -107,7 +107,7 @@ $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
             <li class="w3-bar">
               <div class="w3-bar-item">
                 <span class="w3-large">{{$data->nome}} - {{$date}}</span><br>
-                <span>{{$data->status}} - {{$data->descricao}} </span>
+                <span><strong>{{$data->status}} - {{$data->descricao}}</strong> </span>
               </div>
             </li>
           @endforeach
@@ -128,12 +128,23 @@ $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container">
               <h3>Deliberação do Colegiado</h3><p></p>
-              <div class="w3-col s12">
-                <textarea placeholder="Quais..." name="pro2"></textarea></p>
-              </div> 
+              <form id="form_deliberacao" action="{{route('deliberar', ['{id}'=>$pessoa->id])}}" method="POST">
+                @csrf
+                <div class="w3-col s12">
+                  <select class="w3-select" name="resultado">
+                    <option value="" disabled selected> Resultado do Colegiado</option>
+                    <option value="5"> Aceito </option>
+                    <option value="6"> Recusado</option>
+                  </select>
+                  <hr>
+                </div>
+                <div class="w3-col s12">
+                  <textarea placeholder="Quais..." name="pro2"></textarea></p>
+                </div> 
+              </form>
             </div>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-              <button onclick="javascript:location='home.php?pg=processo_aceito'" type="button" class="w3-button w3-green">Adicionar</button>
+              <button onclick="document.getElementById('form_deliberacao').submit()" type="button" class="w3-button w3-green">Salvar</button>
               <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red w3-right">Cancelar</button>
             </div>
           </div>

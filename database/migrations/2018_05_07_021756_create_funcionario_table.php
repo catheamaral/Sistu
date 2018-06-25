@@ -19,7 +19,7 @@ class CreateFuncionarioTable extends Migration
             $table->string('nome');
             $table->string('cpf');
             $table->string('rg');
-            $table->string('data_nascimento');
+            $table->date('data_nascimento');
             $table->string('endereco');
             $table->string('complemento')->nullable();
 

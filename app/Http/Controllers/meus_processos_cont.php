@@ -31,6 +31,7 @@ class meus_processos_cont extends Controller
                 ['registro_atendimento.aceito', '=', 1],
                 ])
             ->get();
+            
 
         return view('meusProcessos', ['info' => $info]);
     }

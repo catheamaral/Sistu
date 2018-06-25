@@ -89,22 +89,23 @@ class aceito extends Controller
                     'status_id' => 2,
                     'registro_atendimento_id' => $id
         ]);
+        
+        $user_id = ((Auth::user()->id) - 1);
 
-        $pessoa = DB::table('pessoa')
-                        ->where('id',$id)
-                        ->first();
-
-        $info = DB::table('andamento')
-            ->join('registro_atendimento','registro_atendimento.id' , '=','andamento.registro_atendimento_id' )
-            ->join('status', 'status.id', '=', 'andamento.status_id')
-            ->join('pessoa','registro_atendimento.pessoa_id', '=','pessoa.id')
-            ->join('funcionario','funcionario.id','registro_atendimento.funcionario_id')
-            ->select('funcionario.nome','status.status','andamento.*')
-            ->where('andamento.registro_atendimento_id', $id)
-            ->orderby('andamento.data_hora', 'DESC')
+        $info = DB::table('pessoa')
+            ->join('registro_atendimento','registro_atendimento.pessoa_id', '=', 'pessoa.id')
+            ->join('status', 'status.id', 'registro_atendimento.status_id')
+            ->select('pessoa.*','status.status')
+            ->where([
+                ['registro_atendimento.funcionario_id', '=', $user_id],
+                ['registro_atendimento.aceito', '=', 1],
+                ])
             ->get();
 
-        return view('processo_edit', ['pessoa' => $pessoa, 'info' => $info]);
+        $url = route('processos');
+
+        return redirect()->route('processos');
+        //return view('meusProcessos', ['info' => $info]);
 
     }
 

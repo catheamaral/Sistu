@@ -248,7 +248,7 @@ function formatar(mascara, documento){
     <hr>
     <div class="w3-card-4">
       <div class="w3-container w3-red">
-        <h2>Providência</h2>
+        <h2>Situação Atual</h2>
       </div>
 		<div class="w3-panel"><p>
 			  <div class="w3-col s12">
