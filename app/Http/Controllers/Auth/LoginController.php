@@ -39,6 +39,20 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    protected function validateLogin(Request $data)
+    {
+    $this->validate($data, [
+            $this->username()  => 'required', 
+            'password'              => 'required'
+        ],[
+            'request' => 'O campo :attribute é obrigatório'
+        ],[
+            $this->username()  => 'E-mail',
+            'password'              => 'Senha',
+        ]
+    );
+    }
 
     public function logout(Request $request) {
         Auth::logout();

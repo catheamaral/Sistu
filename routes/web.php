@@ -214,3 +214,6 @@ Route::post('np/okay/input_edit/edit/{id}', 'pessoa_cont@update');
 
 ##################################################################################
 Route::redirect('/aceito/{data}/np/{id}', 'np/{id}', 301);
+
+#################################################################################DOCS
+Route::get('/doc/{id}{data}', 'doc_cont@index')->name('docs');

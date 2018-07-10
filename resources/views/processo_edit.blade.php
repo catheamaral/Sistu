@@ -167,32 +167,32 @@ textarea {
                     <th>Ação</th>
                   </tr>
                   <tr>
-                    <td>Documento1</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Medida de Proteção</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 1 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento2</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Requisição de Serviço Público</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 2 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento3</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Notificação de Pessoa</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 3 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento4</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Representação ao Juiz</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 4 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento5</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Representação ao Promotor</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 5 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento6</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Irregularidade em Entidade de Atendimento</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 6 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                   <tr>
-                    <td>Documento7</td>
-                    <td><button type="button" class="w3-button w3-green w3-center">Utilizar</button></td>
+                    <td>Requisição de Certidão de Nascimento ou Óbito</td>
+                    <td><a href="{{route('docs', ['{id}'=>$pessoa->id, '{data}'=> 7 ])}}" class="w3-button w3-green w3-center">Utilizar</a></td>
                   </tr>
                 </table>
             </div>
