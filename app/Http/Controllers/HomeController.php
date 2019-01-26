@@ -30,10 +30,11 @@ class HomeController extends Controller
 
 
         #####################  IDENTIFICANDO O USER
-
+        $user_id = ((Auth::user()->id) -1);
+        
         $user = Auth::user()->perfil_id;
         
-        $user_id = ((Auth::user()->id) -1);
+       
         
         #####################
         
@@ -64,6 +65,8 @@ class HomeController extends Controller
 
         ############################################# DEFININDO ROTAS
         if ($user == 1) {
+
+
 
             return view('estatistica_atendente',['index' => $index, 
                                                 'proc' => $proc,

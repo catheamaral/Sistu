@@ -26,24 +26,89 @@ textarea {
 
 </script>
 <body>
-  <center><h1>Relatório Semestral</h1></center>
-  <center><h4>Relatório Gerencia do Conselho Tutelar de Rio Branco</h4></center>
+
+<center><img src="{!! asset('img/PMRB.jpg') !!}"></center>
+
+  <center><h1>Relatório</h1></center>
+  <center><h2>SISTU - Sistema Tutelar</h2></center>
   <BR>
   <hr>
-  <br>
-  <p><h3>Total de Registro de Atendimento : {{$index}} <h3></p>
-  <p><h3>Casos de Violação a Saúde : {{$saude}} <h3></p>
-  <p><h3>Casos de Violação a Vida : {{$vida}} <h3></p>
-  <p><h3>Casos de Violação a Liberdade : {{$freedom}} <h3></p>
-  <p><h3>Casos de Violação a Educação : {{$educacao}} <h3></p>
-  <p><h3>Casos de Violação a Respeito : {{$respect}} <h3></p>
-  <p><h3>Casos de Violação a Dignidade : {{$dig}} <h3></p>
-  <p><h3>Casos de Violação a Familia: {{$ConvF}} <h3></p>
-  <p><h3>Casos de Violação a Comunidade : {{$ConvComunitaria}} <h3></p>
-  <p><h3>Casos de Violação a Cultura : {{$cultura}} <h3></p>
-  <p><h3>Casos de Violação a Esporte : {{$esporte}} <h3></p>
-  <p><h3>Casos de Violação a Lazer : {{$lazer}} <h3></p>
-  <p><h3>Casos de Violação a Profissão : {{$profissa}} <h3></p>
+  <div class="w3-container">
+    <div class="w3-col s10"><p align="justify"><h3>O relatório abaixo contém dados referentes ao período de </h3></p></div>
+  </div>
+    <div class="w3-panel w3-border">
+      <h3>Contagem do total de processos naquele período <strong> {{$index}}</Strong><h3>
+    </div>
+    <br>
+    <div class="w3-container w3-row-padding w3-white">
+      <center><h2>Direito Violado</h2></center>
+      <p></p>
+      <div class="w3-col s12">
+        <table class="w3-table-all w3-margin-top" id="myTable">
+          <tr>
+            <th style="width:40%;">Nome</th>
+            <th style="width:30%;">Quantidade</th>
+          </tr>
+          <tr>
+            <td>Saude</td>
+            <td>{{$saude}}</td>
+          </tr>
+          <tr>
+            <td>Vida</td>
+            <td>{{$vida}}</td>
+          </tr>
+          <tr>
+            <td>Liberdade</td>
+            <td>{{$freedom}}</td>
+          </tr>
+          <tr>
+            <td>Educação</td>
+            <td>{{$educacao}}</td>
+          </tr>
+          <tr>
+            <td>Respeito</td>
+            <td>{{$respect}}</td>
+          </tr>
+          <tr>
+            <td>Dignidade</td>
+            <td>{{$dig}}</td>
+          </tr>
+          <tr>
+            <td>Familia</td>
+            <td>{{$ConvF}}</td>
+          </tr>
+          <tr>
+            <td>Comunidade</td>
+            <td>{{$vida}}</td>
+          </tr>
+          <tr>
+            <td>Cultura</td>
+            <td>{{$ConvComunitaria}}</td>
+          </tr>
+          <tr>
+            <td>Esporte</td>
+            <td>{{$esporte}}</td>
+          </tr>
+          <tr>
+            <td>Lazer</td>
+            <td>{{$lazer}}</td>
+          </tr>
+          <tr>
+            <td>Profissão</td>
+            <td>{{$profissa}}</td>
+          </tr>
+        </table>
+        <hr>
+      </div>
+</div>
 
+
+
+<center><h4>Rio Branco - Acre<h4></center>
+<center><h4><?php
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+echo strftime('%d de %B de %Y', strtotime('today'));
+?></h4></center></p>
 
 </body>

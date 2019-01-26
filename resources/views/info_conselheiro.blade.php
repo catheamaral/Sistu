@@ -8,8 +8,10 @@
         <div class="w3-col s12">
         <ul class="w3-ul">
         @foreach($conselheiros as $data)
+        
                 <?php
-                    dd($data);
+                
+                    //dd($data);
                     $dt = strtotime($data->data_nascimento);
                     
                     $date = date("d/m/Y", $dt);
@@ -18,7 +20,7 @@
                     $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
                     $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
                     $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
-
+                
                 ?>
             <div class="w3-container"><p></p>
                 <div class="w3-col s6">

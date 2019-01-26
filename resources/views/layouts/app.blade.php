@@ -10,6 +10,26 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.simple-form input:optional {
+  border-left-color: #999;
+}
+option:required {
+  border: palegreen;
+}
+.simple-form input:invalid {
+  border-left-color: salmon;
+}
+
+option:focus {
+  border: 3px solid red;
+}
+
+input:valid {
+  
+}
+
+select: invalid
+
 </style>
 <body class="w3-light-grey">
 
@@ -26,7 +46,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="{!! asset('img/avatar2.png') !!}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar w3-cell-middle">
-      <span>Bem Vindo, <strong><?php $nome = Auth::user()->nome; echo $nome; ?></strong></span><br>
+      <span>Bem Vindo, <strong><?php
+        $perfil_id = Auth::user()->perfil_id;
+
+      if($perfil_id == 3){
+        echo 'Admnistrador';
+      }if($perfil_id == 2){
+        echo 'Conselheiro';
+      }if($perfil_id == 1){
+        echo 'Atendente';
+      } ?></strong></span><br>
     </div>
   </div>
   <hr>

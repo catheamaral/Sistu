@@ -42,15 +42,15 @@ class LoginController extends Controller
     
     protected function validateLogin(Request $data)
     {
-    $this->validate($data, [
+    $this->validate($data,
+         [
             $this->username()  => 'required', 
-            'password'              => 'required'
-        ],[
-            'request' => 'O campo :attribute é obrigatório'
-        ],[
-            $this->username()  => 'E-mail',
-            'password'              => 'Senha',
-        ]
+            'password' => 'required|min:6'
+         ],
+         ['password.min' => 'A senha deve ter o minimo de 6 caracteres',
+          'password.required' => 'A senha deve ser inserida',
+          'email.required' => 'O Email dever ser inserido'
+         ]
     );
     }
 

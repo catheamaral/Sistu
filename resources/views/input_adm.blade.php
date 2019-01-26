@@ -17,7 +17,7 @@ function formatar(mascara, documento){
 
 
   <div class="w3-container w3-white w3-animate-top">
-    <h2>Cadastro de Conselheiro</h2>
+    <h2>Cadastro de Funcionário</h2>
     
     <hr> 
     <div class="w3-card-4 ">
@@ -27,15 +27,20 @@ function formatar(mascara, documento){
 
       <form class="w3-container w3-row-padding w3-white" id="form" action="verify_adm" method="post">
       @csrf
-        <p>
+            </br>
             <div class="w3-col s12">
+                @if ($errors->has('perfil_id'))
+                      <span class="invalid-feedback">
+                          <strong style="color: red;">{{ $errors->first('perfil_id') }}</strong>
+                      </span>
+                      </br>
+                  @endif
               <select class="w3-select" name="perfil_id">
                 <option value="" disabled selected> Qual o Perfil? </option>
                 <option value="1"> Atendente</option>
                 <option value="2"> Conselheiro Tutelar </option>
-              </select></p></br>
-            </div>
-        <p>
+              </select></p>
+            </div></br>
           <div class="w3-col s8">
             <input class="w3-input" type="text" name="nome" id="nome" placeholder="Nome Completo"></p>
           </div>
@@ -68,8 +73,12 @@ function formatar(mascara, documento){
       </div>
     
         <div class="w3-panel">
-          <p>
             <div class="w3-col s12">
+            @if ($errors->has('area_atuacao_id'))
+                      <span class="invalid-feedback">
+                          <strong style="color: red;">{{ $errors->first('area_atuacao_id') }}</strong></br>
+                      </span>
+                  @endif
               <select class="w3-select" name="area_atuacao_id">
                 <option value="" disabled selected> Qual Conselho irá atuar?</option>
                 <option value="1"> 1º Conselho Tutelar</option>
@@ -82,37 +91,39 @@ function formatar(mascara, documento){
     <hr>
     <div class="w3-card-2">
       <div class="w3-container w3-grey">
-        <h2>Login</h2>
+        <h2>Cadastro de Login</h2>
       </div>
     
         <div class="w3-panel">
           <p>
             <div class="w3-col s12">
-              <p>
-              <div class="w3-col s12">
-                  <input id="email" class="w3-input" name="email" type="text" placeholder="Login"></p>
-              </div>
                   @if ($errors->has('email'))
                       <span class="invalid-feedback">
-                          <strong>{{ $errors->first('email') }}</strong>
+                          <strong style="color: red;">{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+              <div class="w3-col s12">
+                  <input id="email" class="w3-input" name="email" type="text" placeholder="Email" required></br>
+              </div>
+              @if ($errors->has('password'))
+                  </br>
+                      <span class="invalid-feedback">
+                          <strong style="color: red;">{{ $errors->first('password') }}</strong>
                       </span>
                   @endif
                 <div class="w3-col s12">
-                  <input id="password" class="w3-input" name="password" type="password" placeholder="Senha"></p>
+                  <input id="password" class="w3-input" name="password" type="password" placeholder="Senha"></br>
                 </div>
-                  @if ($errors->has('email'))
+                @if ($errors->has('password'))
+                </br>
                       <span class="invalid-feedback">
-                          <strong>{{ $errors->first('email') }}</strong>
+                          <strong style="color: red;">{{ $errors->first('password') }}</strong>
                       </span>
                   @endif
                   <div class="w3-col s12">
-                    <input id="password-cofirm" class="w3-input" name="password-confirm" type="password" placeholder="Confirme sua Senha"></p>
+                    <input id="password_cofirmation" class="w3-input" name="password_confirmation" type="password" placeholder="Confirme sua Senha"></br>
                   </div>
-                  @if ($errors->has('email'))
-                      <span class="invalid-feedback">
-                          <strong>{{ $errors->first('email') }}</strong>
-                      </span>
-                  @endif
+                  
               </div>
             </div>
         </div>

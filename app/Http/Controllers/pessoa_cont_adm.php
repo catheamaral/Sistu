@@ -41,11 +41,31 @@ class pessoa_cont_adm extends Controller
      */
     public function store(Request $request)
     {
+        //################################################### VALIDAÇÃO
+        $validatedData = $request->validate([
+            /* LOGIN */
+            'nome' => 'required|max:255',
+            'email' => 'required|email|string|unique:users,email',
+            'password' => 'required|min:6',
+            /* IDENTIFICAÇÃO */
+            'perfil_id' => 'required',
+            /* AREA DE ATUAÇÃO */
+            'area_atuacao_id' => 'required'
+        ],
+        [
+            'email.required' => 'O Campo é necessário para o cadastro',
+            'password.required' => 'A Senha é Obrigatória',
+            'perfil_id.required' => 'Selecione a Função do Atendente',
+            'area_atuacao_id.required' => 'Selecione a Área de Atuação do Atendente', 
+            'email.email' => 'Insira um Email válido',
+            'email.unique' => 'O Email já está em uso',
+        ]);
+        //################################################### FIM DA VALIDAÇÃO
         
         $info = Funcionario::create($request->all());
         //$usuario = User::create($request->all());
         $usuario = User::create([
-            'name' => $request['name'],
+            'nome' => $request['nome'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'perfil_id' => $request['perfil_id'],
