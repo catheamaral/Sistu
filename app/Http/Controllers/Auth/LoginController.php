@@ -44,12 +44,12 @@ class LoginController extends Controller
     {
     $this->validate($data,
          [
-            $this->username()  => 'required', 
-            'password' => 'required|min:6'
+            $this->username()  => 'required|email', 
+            'password' => 'nullable|min:6'
          ],
          ['password.min' => 'A senha deve ter o minimo de 6 caracteres',
           'password.required' => 'A senha deve ser inserida',
-          'email.required' => 'O Email dever ser inserido'
+          'email.required' => 'Preencha o campo de forma correta'
          ]
     );
     }

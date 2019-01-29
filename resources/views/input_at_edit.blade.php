@@ -51,7 +51,7 @@ function formatar(mascara, documento){
         @csrf
         <p>
 			<div  class="w3-col s12">
-				<select class="w3-select" name="oriDenuncia">
+				<select class="w3-select" name="oriDenuncia" required>
 				<option value="" disabled selected> Origem da Denuncia</option>
 				<option value="local"> Local</option>
 				<option value="tel"> Telefone</option>

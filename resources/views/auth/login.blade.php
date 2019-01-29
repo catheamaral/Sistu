@@ -16,19 +16,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
                         <div class="w3-section">
                             <label for="email"><b>{{ __('E-Mail') }}</b></label>                            
-                                <input id="email" type="email" class="w3-input w3-border w3-margin-bottom" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="w3-input w3-border w3-margin-bottom" name="email" value="{{ old('email') }}" required oninvalid="this.setCustomValidity('Insira o E-mail válido do Usuário')" oninput="this.setCustomValidity('')">
 
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('email') }}</strong></br>
-                                        </span>
-                                    @endif
+                                    
 
                             <label for="password"><b>{{ __('Senha') }}</b></label>
-                                <input id="password" type="password" class="w3-input w3-border" name="password">
+                                <input id="password" type="password" class="w3-input w3-border" name="password" required oninvalid="this.setCustomValidity('Insira a senha')" oninput="this.setCustomValidity('')">
+                                @if ($errors->has('email'))
+                                        <span class="invalid-feedback">
+                                            <strong style="color: red">{{ $errors->first('email') }}</strong></br>
+                                        </span>
+                                    @endif
                                 @if ($errors->has('password'))
+                                    
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong style="color: red">{{ $errors->first('password') }}</strong></br>
                                     </span>
                                 @endif
 

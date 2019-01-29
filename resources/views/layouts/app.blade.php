@@ -7,28 +7,33 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.simple-form input:optional {
-  border-left-color: #999;
-}
-option:required {
-  border: palegreen;
-}
-.simple-form input:invalid {
-  border-left-color: salmon;
+
+input:optional {
+  border-bottom: 1px solid Lightgrey;
 }
 
-option:focus {
-  border: 3px solid red;
+input:invalid {
+  background: url("img/excl.jpg") no-repeat 99% 10%;
+  background-size: 13px;
 }
 
-input:valid {
-  
+input:required:valid {
+  border-bottom: 1px solid Lightgrey;
 }
-
-select: invalid
+select:invalid {
+  background: url("img/excl.jpg") no-repeat 97% 10%;
+  background-size: 13px;
+}
+select:required:valid {
+  border-bottom: 1px solid Lightgrey;
+}
+select:optional {
+  border-bottom: 1px solid Lightgrey;
+}
 
 </style>
 <body class="w3-light-grey">

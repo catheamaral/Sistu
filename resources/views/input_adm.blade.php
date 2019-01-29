@@ -35,14 +35,14 @@ function formatar(mascara, documento){
                       </span>
                       </br>
                   @endif
-              <select class="w3-select" name="perfil_id">
+              <select class="w3-select" name="perfil_id" required>
                 <option value="" disabled selected> Qual o Perfil? </option>
                 <option value="1"> Atendente</option>
                 <option value="2"> Conselheiro Tutelar </option>
               </select></p>
             </div></br>
           <div class="w3-col s8">
-            <input class="w3-input" type="text" name="nome" id="nome" placeholder="Nome Completo"></p>
+            <input class="w3-input" type="text" name="nome" id="nome" placeholder="Nome Completo" required></p>
           </div>
         <p>
           <div class="w3-col s4">  
@@ -79,7 +79,7 @@ function formatar(mascara, documento){
                           <strong style="color: red;">{{ $errors->first('area_atuacao_id') }}</strong></br>
                       </span>
                   @endif
-              <select class="w3-select" name="area_atuacao_id">
+              <select class="w3-select" name="area_atuacao_id" required>
                 <option value="" disabled selected> Qual Conselho irá atuar?</option>
                 <option value="1"> 1º Conselho Tutelar</option>
                 <option value="2"> 2º Conselho Tutelar</option>
@@ -103,7 +103,7 @@ function formatar(mascara, documento){
                       </span>
                   @endif
               <div class="w3-col s12">
-                  <input id="email" class="w3-input" name="email" type="text" placeholder="Email" required></br>
+                  <input id="email" class="w3-input" name="email" type="email" placeholder="Email" required></br>
               </div>
               @if ($errors->has('password'))
                   </br>

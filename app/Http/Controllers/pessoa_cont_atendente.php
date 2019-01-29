@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Rules\Idade;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
@@ -22,12 +22,25 @@ class pessoa_cont_atendente extends Controller
      */
     public function index()
     {
+        $id = Auth::user()->id;
+
+        $area = DB::table('users')
+            ->join('verifications','users.id','=', 'verifications.users_id')
+            ->join('funcionario','funcionario.id','=', 'verifications.funcionario_t_id')
+            ->select('funcionario.area_atuacao_id')
+            ->where('users.id', $id)
+            ->first();
+
+        $cansei = $area->area_atuacao_id;
 
         $conselheiros = DB::table('funcionario')
             ->join('perfil', 'perfil.id', '=', 'funcionario.perfil_id')
             ->join('area_atuacao', 'area_atuacao.id', '=', 'funcionario.area_atuacao_id')
             ->select('funcionario.*', 'area_atuacao.atuacao', 'perfil.descricao')
-            ->where('perfil.id', 2)
+            ->where([
+                ['perfil.id', 2],
+                ['area_atuacao.id', $cansei]
+            ])
             ->get();
         
 
@@ -55,10 +68,25 @@ class pessoa_cont_atendente extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make(
-            ['cpf_responsavel' => $request->cpf_responsavel],
-            ['cpf_responsavel' => 'bail|required|cpf']
-        );
+        $validatedData = $request->validate([
+            'nome' => 'required|max:60',
+            'oriDenuncia' => 'required',
+            'endereco' => 'required|max:45',
+            'responsavel' => 'required|max:60',
+            'rg_responsavel' => 'required',
+            'cpf_responsavel' => 'required|max:11',
+            'contato_responsavel' => 'required|max:10',
+            'data_nascimento' => [new Idade],
+            'funcionario_id' => 'required'
+        ],
+        [
+            'required' => 'O Campo é obrigatório',
+            'contato_responsavel.required' => 'Telefone',
+            'rg_responsavel.required' => 'RG',
+            'cpf_responsavel.required' => 'CPF',
+            'max' => 'O :attribute Atingiu o máximo de caracteres' 
+        ]);
+
         
         $id = Auth::user()->id;
         $pessoa = Pessoa::create($request->all());
