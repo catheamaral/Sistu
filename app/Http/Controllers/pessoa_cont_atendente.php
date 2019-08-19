@@ -67,7 +67,7 @@ class pessoa_cont_atendente extends Controller
      */
     public function store(Request $request)
     {
-
+        /*
         $validatedData = $request->validate([
             'nome' => 'required|max:60',
             'oriDenuncia' => 'required',
@@ -86,7 +86,7 @@ class pessoa_cont_atendente extends Controller
             'cpf_responsavel.required' => 'CPF',
             'max' => 'O :attribute Atingiu o máximo de caracteres' 
         ]);
-
+        */
         
         $id = Auth::user()->id;
         $pessoa = Pessoa::create($request->all());

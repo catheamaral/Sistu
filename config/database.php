@@ -44,7 +44,7 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'sistu_db'),
-            'username' => env('DB_USERNAME', 'teste_sistu'),
+            'username' => env('DB_USERNAME', 'sistu_dba'),
             'password' => env('DB_PASSWORD', 'sistu'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -53,8 +53,7 @@ return [
             'strict' => false,
             'engine' => null,
             'modes'  => [
-                'ONLY_FULL_GROUP_BY',
-                'STRICT_TRANS_TABLES',
+                'STRICT_ALL_TABLES',
                 'NO_ZERO_IN_DATE',
                 'NO_ZERO_DATE',
                 'ERROR_FOR_DIVISION_BY_ZERO',
